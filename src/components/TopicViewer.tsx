@@ -1,0 +1,144 @@
+import React, { useState, useEffect } from 'react';
+import { Topic } from '../types';
+import { AnimationCanvas } from './AnimationEngine/AnimationCanvas';
+import { TeacherNote, SketchyHighlight, SketchyBox, SketchyButton } from './Controls/SketchyComponents';
+import { Lightbulb, AlertTriangle, CheckCircle2, Languages } from 'lucide-react';
+
+interface Props {
+  topic: Topic;
+}
+
+export const TopicViewer: React.FC<Props> = ({ topic }) => {
+  const [isTranslated, setIsTranslated] = useState(false);
+  const isModule1 = topic.id.startsWith('t1-');
+  const isModule2 = topic.id.startsWith('t2-');
+
+  // Reset translation when topic changes
+  useEffect(() => {
+    setIsTranslated(false);
+  }, [topic.id]);
+
+  const displayTitle = isTranslated && topic.telugu ? topic.telugu.title : topic.title;
+  const displayDefinition = isTranslated && topic.telugu ? topic.telugu.definition : topic.definition;
+  const displayWhy = isTranslated && topic.telugu ? topic.telugu.why : topic.why;
+  const displayExample = isTranslated && topic.telugu ? topic.telugu.example : topic.example;
+  const displayRevisionHook = isTranslated && topic.telugu ? topic.telugu.revisionHook : topic.revisionHook;
+
+  return (
+    <div className="max-w-7xl mx-auto p-4 md:p-8 lg:p-12">
+      {/* Title Header */}
+      <div className="mb-10 border-b-4 border-black/10 pb-6 pr-12 md:pr-0 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 className="text-3xl md:text-5xl font-bold text-slate-800 font-sans mb-3 leading-tight transition-all">
+            {displayTitle}
+          </h1>
+          <div className="flex flex-wrap items-center gap-3 text-slate-600 font-mono text-xs md:text-sm">
+            {!isModule1 && !isModule2 && (
+              <>
+                <span className="bg-slate-200 px-3 py-1 rounded-full text-[10px] md:text-xs">EXAM FOCUS</span>
+                <span className="hidden md:inline text-slate-300">|</span>
+              </>
+            )}
+            <span className="tracking-widest opacity-70">INTERACTIVE THEORY MODULE</span>
+          </div>
+        </div>
+
+        {/* Translate Button for Module 1 and 2 */}
+        {(isModule1 || isModule2) && topic.telugu && (
+          <SketchyButton
+            onClick={() => setIsTranslated(!isTranslated)}
+            active={isTranslated}
+            className="flex items-center gap-2 text-xs md:text-sm self-start md:self-auto !py-2 !px-5"
+          >
+            <Languages size={18} />
+            {isTranslated ? 'English Mode' : 'Romanized Telugu Mode'}
+          </SketchyButton>
+        )}
+      </div>
+
+      {/* Main Grid - Asymmetrical on Large Screens */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-12 items-start">
+
+        {/* Left Col: Theory - Sticky on large screens */}
+        <div className="space-y-8 order-2 lg:order-1 lg:sticky lg:top-8">
+          <section className="bg-white p-6 rounded-xl border-2 border-slate-100 shadow-sm">
+            <h3 className="text-sm font-black uppercase text-blue-500 mb-3 tracking-[0.2em]">The Concept</h3>
+            <div className="text-xl md:text-2xl font-bold leading-relaxed text-slate-800">
+              <span className="relative inline-block">
+                {displayDefinition}
+                <div className="absolute -bottom-1 left-0 w-full h-1 bg-yellow-300 opacity-50"></div>
+              </span>
+            </div>
+          </section>
+
+          <section>
+            <h3 className="text-xs font-black uppercase text-slate-400 mb-2 tracking-[0.2em]">Why it matters?</h3>
+            <p className="text-slate-600 text-sm md:text-lg leading-relaxed">{displayWhy}</p>
+          </section>
+
+          <section>
+            <h3 className="text-xs font-black uppercase text-slate-400 mb-2 tracking-[0.2em]">Scenario</h3>
+            <div className="flex items-start gap-4 bg-green-50/50 p-5 rounded-xl border-2 border-dashed border-green-200 transition-all">
+              <Lightbulb className="text-green-600 shrink-0 mt-1" size={24} />
+              <p className="text-slate-700 font-medium italic text-sm md:text-lg leading-snug">{displayExample}</p>
+            </div>
+          </section>
+        </div>
+
+        {/* Right Col: Whiteboard - THE FOCUS AREA */}
+        <div className="space-y-4 w-full min-w-0 order-1 lg:order-2">
+          <div className="flex justify-between items-center px-2">
+            <h3 className="text-xs font-black uppercase text-slate-500 tracking-[0.3em]">Interactive Whiteboard</h3>
+            <span className="hidden md:inline text-[10px] font-mono text-slate-400 uppercase tracking-tighter">Click "Next" to build the model</span>
+          </div>
+          <AnimationCanvas type={topic.animationType} />
+        </div>
+      </div>
+
+      {/* Exam Section */}
+      <div className="mt-16 space-y-10">
+
+        {/* Hide Exam Angle specifically for Module 1 topics */}
+        {!isModule1 && (
+          <SketchyBox className="!bg-yellow-50 !border-yellow-600 !p-6 md:!p-10">
+            <div className="flex items-center gap-3 mb-6 border-b-2 border-yellow-200 pb-4">
+              <CheckCircle2 className="text-yellow-700" size={32} />
+              <h3 className="text-2xl md:text-3xl font-black text-yellow-900 tracking-tight">Critical Exam Angle</h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div>
+                <div className="text-[10px] font-black text-yellow-800 uppercase mb-2 tracking-widest">Typical Question Pattern:</div>
+                <p className="font-serif text-lg md:text-xl italic text-slate-800 leading-tight">"{topic.belAngle.questionStyle}"</p>
+              </div>
+              <div className="bg-white/60 p-5 rounded-lg border border-yellow-200 shadow-sm">
+                <div className="text-[10px] font-black text-green-800 uppercase mb-2 tracking-widest">The Winning Answer:</div>
+                <p className="font-black text-lg md:text-2xl text-green-700">{topic.belAngle.answer}</p>
+              </div>
+            </div>
+          </SketchyBox>
+        )}
+
+        <TeacherNote>
+          <div className="flex items-start gap-4">
+            <AlertTriangle className="w-8 h-8 text-blue-400 shrink-0" />
+            <div className="text-sm md:text-lg">
+              <span className="font-black block text-xs uppercase mb-1 tracking-widest opacity-60">Don't Get Confused!</span>
+              {topic.belAngle.confusion}
+            </div>
+          </div>
+        </TeacherNote>
+
+        <div className="text-center mt-12">
+          <div className="inline-block border-2 border-dashed border-slate-300 p-6 md:p-8 rounded-2xl bg-slate-50 shadow-inner max-w-full">
+            <div className="text-[10px] font-black text-slate-400 uppercase mb-3 tracking-[0.3em]">Revision Hook</div>
+            <div className="font-mono text-lg md:text-3xl font-black tracking-tighter text-slate-800 px-4">
+              {displayRevisionHook}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
