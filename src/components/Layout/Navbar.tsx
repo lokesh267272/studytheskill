@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) =
                             href={`#${course.toLowerCase()}`}
                             key={course}
                             className={`
-                                px-4 py-3 text-sm hover:bg-black/30 transition-colors block
+                                px-4 py-3 text-sm hover:bg-black/30 transition-colors block !text-white
                                 ${course === 'SQL' ? 'bg-[#04AA6D] hover:bg-[#04AA6D]' : ''} 
                             `}
                         >
@@ -66,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) =
                     ))}
                     <a
                         href="/dbms/what-is-dbms"
-                        className="px-4 py-3 text-sm bg-[#04AA6D] hover:bg-[#059862] transition-colors font-bold block"
+                        className="px-4 py-3 text-sm bg-[#04AA6D] hover:bg-[#059862] transition-colors font-bold block !text-white"
                     >
                         DBMS
                     </a>
