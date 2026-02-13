@@ -30,9 +30,9 @@ export const DbmsVsFilesDiagram = ({ step }: { step: number }) => {
         setTimer(0);
 
         // Simulation time based on current mode (step)
-        // Step 0-1: File System (Slow)
-        // Step 2-3: DBMS (Fast)
-        const isDbms = step >= 2;
+        // Step 0: File System (Slow)
+        // Step 1: DBMS (Fast)
+        const isDbms = step >= 1;
         const duration = isDbms ? 800 : 3000;
 
         setTimeout(() => {
@@ -45,10 +45,10 @@ export const DbmsVsFilesDiagram = ({ step }: { step: number }) => {
             {/* Header / Context */}
             <div className="text-center mb-6">
                 <h3 className="text-lg font-bold text-slate-700">
-                    {step < 2 ? "Legacy: File System Mode" : "Modern: DBMS Mode"}
+                    {step < 1 ? "Legacy: File System Mode" : "Modern: DBMS Mode"}
                 </h3>
                 <p className="text-xs text-slate-500 font-mono">
-                    {step < 2 ? "Goal: Find 'Student: John' in the pile." : "Goal: Query 'ID: 101' from the index."}
+                    {step < 1 ? "Goal: Find 'Student: John' in the pile." : "Goal: Query 'ID: 101' from the index."}
                 </p>
             </div>
 
@@ -57,9 +57,9 @@ export const DbmsVsFilesDiagram = ({ step }: { step: number }) => {
                 {/* Visual Area */}
                 <div className="relative w-64 h-64 bg-slate-50 rounded-lg border-2 border-slate-300 overflow-hidden shadow-inner md:w-80 md:h-72">
 
-                    {/* SCENARIO 1: MESSY FILES (Steps 0 & 1) */}
+                    {/* SCENARIO 1: MESSY FILES (Step 0) */}
                     <AnimatePresence>
-                        {step < 2 && (
+                        {step < 1 && (
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -120,9 +120,9 @@ export const DbmsVsFilesDiagram = ({ step }: { step: number }) => {
                     </AnimatePresence>
 
 
-                    {/* SCENARIO 2: DBMS (Steps 2 & 3) */}
+                    {/* SCENARIO 2: DBMS (Step 1) */}
                     <AnimatePresence>
-                        {step >= 2 && (
+                        {step >= 1 && (
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -185,7 +185,7 @@ export const DbmsVsFilesDiagram = ({ step }: { step: number }) => {
 
                     <SketchyButton
                         onClick={handleSearch}
-                        active={step >= 2}
+                        active={step >= 1}
                         className={`w-full text-center justify-center ${searchState === 'searching' ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                         {searchState === 'searching' ? "Scanning..." : "Run Query"}

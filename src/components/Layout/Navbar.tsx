@@ -7,11 +7,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) => {
-    const courses = [
-        "HTML", "CSS", "JAVASCRIPT", "SQL", "PYTHON", "JAVA", "PHP",
-        "HOW TO", "W3.CSS", "C", "C++", "C#", "BOOTSTRAP", "REACT",
-        "MYSQL", "JQUERY", "EXCEL", "XML", "DJANGO", "NUMPY", "PANDAS"
-    ];
+    const courses: string[] = [];
 
     return (
         <div className="flex flex-col w-full z-50">

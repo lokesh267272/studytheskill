@@ -24,14 +24,43 @@ interface AnimationCanvasProps {
     type: string;
 }
 
+const MAX_STEPS: Record<string, number> = {
+    'abstraction': 3,
+    'schema_instance': 2,
+    'keys': 3,
+    'super_candidate_keys': 3,
+    'joins': 4,
+    'acid': 3,
+    'er': 6,
+    'norm_1nf': 2,
+    'norm_2nf': 2,
+    'norm_3nf': 2,
+    'norm_bcnf': 2,
+    'norm_4nf': 2,
+    'norm_5nf': 2,
+    'sql': 2,
+    'indexing': 1,
+    'languages': 2,
+    'dbms_vs_files': 1,
+    'triggers': 4
+};
+
 export const AnimationCanvas: React.FC<AnimationCanvasProps> = ({ type }) => {
     const [step, setStep] = useState(0);
+
+    // Get max steps for current type, default to 3 if not found
+    const maxSteps = MAX_STEPS[type] ?? 3;
 
     useEffect(() => {
         setStep(0);
     }, [type]);
 
-    const nextStep = () => setStep(s => s + 1);
+    const nextStep = () => {
+        if (step < maxSteps) {
+            setStep(s => s + 1);
+        }
+    };
+
     const reset = () => setStep(0);
 
     const renderContent = () => {
@@ -93,7 +122,7 @@ export const AnimationCanvas: React.FC<AnimationCanvasProps> = ({ type }) => {
                 <div className="flex flex-col">
                     <span className="font-mono text-[10px] text-slate-400 uppercase tracking-[0.2em]">Sequence Status</span>
                     <div className="flex gap-1 mt-1">
-                        {[0, 1, 2, 3, 4, 5, 6].map(i => (
+                        {Array.from({ length: maxSteps + 1 }).map((_, i) => (
                             <div key={i} className={`h-1.5 w-6 rounded-full transition-all duration-300 ${step >= i ? 'bg-blue-600' : 'bg-slate-200'}`} />
                         ))}
                     </div>
@@ -102,9 +131,11 @@ export const AnimationCanvas: React.FC<AnimationCanvasProps> = ({ type }) => {
                     <SketchyButton onClick={reset} className="!text-[10px] md:!text-xs py-2 px-5 !bg-slate-50 !border-slate-300 flex items-center gap-2">
                         <RefreshCcw size={14} /> Reset View
                     </SketchyButton>
-                    <SketchyButton onClick={nextStep} active={false} className="!text-[10px] md:!text-xs py-2 px-8 !bg-blue-600 !text-white !border-blue-700 flex items-center gap-2 shadow-lg shadow-blue-200">
-                        Next Action <ArrowRight size={14} />
-                    </SketchyButton>
+                    <div className={`transition-all duration-300 ${step >= maxSteps ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                        <SketchyButton onClick={nextStep} active={false} className="!text-[10px] md:!text-xs py-2 px-8 !bg-blue-600 !text-white !border-blue-700 flex items-center gap-2 shadow-lg shadow-blue-200">
+                            Next Action <ArrowRight size={14} />
+                        </SketchyButton>
+                    </div>
                 </div>
             </div>
         </div>
