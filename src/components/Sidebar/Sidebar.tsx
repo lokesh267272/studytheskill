@@ -31,8 +31,9 @@ export const Sidebar: React.FC<Props> = ({
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:relative md:h-[calc(100vh-110px)] md:top-0
         top-[110px] /* Below Navbar (60px) + Secondary Bar (50px) approx */
+        h-[calc(100vh-110px)]
       `}>
-                <div className="p-6 border-b-2 border-black bg-yellow-300">
+                <div className="p-6 border-b-2 border-black bg-yellow-300 sticky top-0 z-10">
                     <h1 className="text-2xl font-bold font-sans tracking-tight uppercase">{title}</h1>
                     <p className="text-xs font-mono mt-2">{subtitle}</p>
                 </div>

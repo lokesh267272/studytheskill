@@ -20,6 +20,7 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'DBMS = The Smart Librarian',
         animationType: 'dbms_vs_files',
         slug: 'what-is-dbms',
+
         telugu: {
           title: 'DBMS ante entante?',
           definition: 'Database ni define cheyadaniki, create cheyadaniki, maintain cheyadaniki use ayye software idi.',
@@ -292,6 +293,12 @@ export const COURSE_MODULES: Module[] = [
         },
         revisionHook: 'A=All/Nothing | C=Rules | I=Privacy | D=Permanent',
         animationType: 'acid',
+        breakdown: [
+          { label: 'Atomicity', text: 'All or Nothing. Either the entire transaction happens, or none of it does. No halfway states.' },
+          { label: 'Consistency', text: 'Rules are Law. The database must move from one valid state to another, obeying all constraints.' },
+          { label: 'Isolation', text: 'Privacy Mode. Transactions happening at the same time shouldn’t peek at or mess with each other.' },
+          { label: 'Durability', text: 'Written in Stone. Once a transaction is committed, it stays saved even if the power goes out.' }
+        ],
         slug: 'acid-properties',
       },
       {

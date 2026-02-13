@@ -107,7 +107,7 @@ export const AnimationCanvas: React.FC<AnimationCanvasProps> = ({ type }) => {
     };
 
     return (
-        <div className="w-full bg-white border-2 border-slate-300 rounded-2xl p-2 md:p-8 min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex flex-col relative overflow-hidden shadow-xl">
+        <div className="w-full bg-white border-2 border-slate-300 rounded-2xl p-2 md:p-8 min-h-[300px] md:min-h-[500px] lg:min-h-[600px] flex flex-col relative overflow-hidden shadow-xl">
             <div className="absolute top-0 left-0 w-full h-3 bg-slate-100 pattern-diagonal-lines opacity-50"></div>
 
             {/* Full View Content Container */}

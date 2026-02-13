@@ -24,6 +24,11 @@ export interface Topic {
     example: string;
     revisionHook: string;
   };
+  breakdown?: {
+    label: string;
+    text: string;
+    icon?: string;
+  }[];
 }
 
 export interface Module {

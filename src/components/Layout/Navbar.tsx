@@ -8,11 +8,12 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) => {
     const courses: string[] = [];
+    const [searchOpen, setSearchOpen] = React.useState(false);
 
     return (
-        <div className="flex flex-col w-full z-50">
+        <div className="flex flex-col w-full z-50 sticky top-0">
             {/* Top Bar - Global Navigation */}
-            <div className="flex items-center justify-between bg-[#282A35] h-[60px] px-4 text-white">
+            <div className="flex items-center justify-between bg-[#282A35] h-[60px] px-4 text-white relative">
                 <div className="flex items-center gap-4">
                     <button
                         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -26,6 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) =
                             <Code size={24} className="text-white" />
                         </div>
                         <span className="font-bold text-lg tracking-wide hidden sm:block">StudyTheSkill</span>
+                        <span className="font-bold text-lg tracking-wide sm:hidden">STS</span>
                     </div>
 
                     <nav className="hidden md:flex gap-1 ml-4 h-full items-center">
@@ -34,13 +36,26 @@ export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) =
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <div className="relative hidden sm:block">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="bg-white/90 text-black px-4 py-1.5 rounded-full w-40 focus:w-60 transition-all outline-none"
-                        />
-                        <Search size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                    {/* Mobile Search Toggle */}
+                    <button
+                        onClick={() => setSearchOpen(!searchOpen)}
+                        className="sm:hidden p-2 hover:bg-white/10 rounded"
+                    >
+                        <Search size={20} />
+                    </button>
+
+                    <div className={`
+                        absolute sm:relative top-full left-0 w-full sm:w-auto bg-[#282A35] sm:bg-transparent p-4 sm:p-0
+                        ${searchOpen ? 'block' : 'hidden'} sm:block z-50 shadow-lg sm:shadow-none
+                    `}>
+                        <div className="relative">
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                className="bg-white/90 text-black px-4 py-1.5 rounded-full w-full sm:w-40 focus:w-60 transition-all outline-none"
+                            />
+                            <Search size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                        </div>
                     </div>
                 </div>
             </div>
