@@ -7,9 +7,20 @@ import { CheckSquare } from 'lucide-react';
 interface Props {
     isOpen: boolean;
     onToggle: () => void;
+    modules: Module[];
+    title: React.ReactNode;
+    subtitle?: string;
+    basePath: string; // e.g. /dbms or /dsa
 }
 
-export const Sidebar: React.FC<Props> = ({ isOpen, onToggle }) => {
+export const Sidebar: React.FC<Props> = ({
+    isOpen,
+    onToggle,
+    modules,
+    title,
+    subtitle = "Core Concepts Mastery",
+    basePath
+}) => {
     const { topicSlug } = useParams();
 
     return (
@@ -22,12 +33,12 @@ export const Sidebar: React.FC<Props> = ({ isOpen, onToggle }) => {
         top-[110px] /* Below Navbar (60px) + Secondary Bar (50px) approx */
       `}>
                 <div className="p-6 border-b-2 border-black bg-yellow-300">
-                    <h1 className="text-2xl font-bold font-sans tracking-tight uppercase">DBMS <br />MASTER</h1>
-                    <p className="text-xs font-mono mt-2">Core Concepts Mastery</p>
+                    <h1 className="text-2xl font-bold font-sans tracking-tight uppercase">{title}</h1>
+                    <p className="text-xs font-mono mt-2">{subtitle}</p>
                 </div>
 
                 <div className="p-4 space-y-6">
-                    {COURSE_MODULES.map((module: Module) => (
+                    {modules.map((module: Module) => (
                         <div key={module.id}>
                             <h3 className="font-bold text-xs uppercase text-slate-500 tracking-wider mb-3 flex items-center gap-2">
                                 {module.priority === 1 && <span className="text-red-500">🔥</span>}
@@ -37,7 +48,7 @@ export const Sidebar: React.FC<Props> = ({ isOpen, onToggle }) => {
                                 {module.topics.map((topic: Topic) => (
                                     <li key={topic.id}>
                                         <Link
-                                            to={`/dbms/${topic.slug}`}
+                                            to={`${basePath}/${topic.slug}`}
                                             onClick={() => {
                                                 if (window.innerWidth < 768) onToggle();
                                             }}
@@ -56,18 +67,20 @@ export const Sidebar: React.FC<Props> = ({ isOpen, onToggle }) => {
                         </div>
                     ))}
 
-                    <div className="pt-4 border-t-2 border-dashed border-slate-300">
-                        <Link
-                            to="/dbms/revision"
-                            onClick={() => {
-                                if (window.innerWidth < 768) onToggle();
-                            }}
-                            className={`w-full text-left font-bold flex items-center gap-2 p-3 rounded transition-all ${topicSlug === 'revision' ? 'bg-green-100 text-green-800 border-l-4 border-green-600' : 'hover:bg-gray-100'}`}
-                        >
-                            <CheckSquare size={18} />
-                            Final Revision Checklist
-                        </Link>
-                    </div>
+                    {basePath === '/dbms' && (
+                        <div className="pt-4 border-t-2 border-dashed border-slate-300">
+                            <Link
+                                to="/dbms/revision"
+                                onClick={() => {
+                                    if (window.innerWidth < 768) onToggle();
+                                }}
+                                className={`w-full text-left font-bold flex items-center gap-2 p-3 rounded transition-all ${topicSlug === 'revision' ? 'bg-green-100 text-green-800 border-l-4 border-green-600' : 'hover:bg-gray-100'}`}
+                            >
+                                <CheckSquare size={18} />
+                                Final Revision Checklist
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
 

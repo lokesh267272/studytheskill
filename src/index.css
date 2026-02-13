@@ -21,3 +21,41 @@
     background-color: #ffffff;
   }
 }
+
+/* DSA Module Custom Styles */
+@theme {
+  --font-hand: "Patrick Hand", cursive;
+
+  --color-paper: #ffffff;
+  --color-ink: #1a1a1a;
+  --color-highlight: #fef08a;
+  /* Yellow-200 */
+  --color-danger: #fca5a5;
+  /* Red-300 */
+  --color-accent: #bae6fd;
+  /* Blue-200 */
+
+  --shadow-sketch: 3px 3px 0px 0px #1a1a1a;
+  --shadow-sketch-hover: 5px 5px 0px 0px #1a1a1a;
+  --shadow-sketch-active: 1px 1px 0px 0px #1a1a1a;
+}
+
+/* Custom Scrollbar for Sketchy Feel */
+.scrollbar-sketchy::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar-sketchy::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-left: 2px solid #000;
+}
+
+.scrollbar-sketchy::-webkit-scrollbar-thumb {
+  background: #000;
+  border: 2px solid #f1f1f1;
+  border-radius: 10px;
+}
+
+.scrollbar-sketchy::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}

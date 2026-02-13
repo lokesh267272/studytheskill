@@ -65,10 +65,16 @@ export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) =
                         </a>
                     ))}
                     <a
-                        href="/dbms/what-is-dbms"
+                        href="/dbms"
                         className="px-4 py-3 text-sm bg-[#04AA6D] hover:bg-[#059862] transition-colors font-bold block !text-white"
                     >
                         DBMS
+                    </a>
+                    <a
+                        href="/dsa"
+                        className="px-4 py-3 text-sm bg-[#FF5722] hover:bg-[#E64A19] transition-colors font-bold block !text-white"
+                    >
+                        DSA
                     </a>
                 </div>
             </div>
