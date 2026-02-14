@@ -3,6 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import { COURSE_MODULES } from '../data/conceptMeta';
 import { TopicViewer } from './TopicViewer';
 import { RevisionView } from './RevisionView';
+import { useSEO } from '../hooks/useSEO';
 
 export const TopicPage = () => {
     const { topicSlug } = useParams();
@@ -14,6 +15,13 @@ export const TopicPage = () => {
     // Flatten topics to find the one matching the slug
     const allTopics = COURSE_MODULES.flatMap(m => m.topics);
     const foundTopic = allTopics.find(t => t.slug === topicSlug);
+
+    // Dynamic SEO
+    useSEO(foundTopic ? {
+        title: `${foundTopic.title} – DBMS`,
+        description: foundTopic.definition?.slice(0, 160),
+        path: `/dbms/${foundTopic.slug}/`,
+    } : {});
 
     if (!foundTopic) {
         // Fallback or 404. For now, redirect to first topic.
@@ -33,3 +41,4 @@ export const TopicPage = () => {
 
     return <TopicViewer topic={foundTopic} />;
 };
+

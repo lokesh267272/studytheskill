@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Module 1: Time & Space Complexity -->
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-1-why/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-2-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-3-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-4-input-size-n/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-5-best-avg-worst/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-6-notations/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-7-big-o/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-8-big/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-9-big/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-10-the-ladder/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-11-o-log-n/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-12-nested-loops/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-13-recursion-space/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-14-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-1-time-space-complexity-15-recap/</loc></url>
+
+  <!-- Module 2: Arrays -->
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-1-definition/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-2-indexing/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-3-memory/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-4-types/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-5-operations/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-6-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-7-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-8-static-vs-dynamic/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-9-10-pros-cons/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-11-vs-linked-list/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-12-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-2-arrays-13-shortcuts/</loc></url>
+
+  <!-- Module 3: Strings -->
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-1-definition/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-2-memory/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-3-vs-char-array/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-4-length/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-5-operations/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-6-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-7-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-8-mutability/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-9-input-output/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-10-problems/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-11-vs-arrays/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-12-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-3-strings-13-shortcuts/</loc></url>
+
+  <!-- Module 4: Linked Lists -->
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-1-intro/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-2-the-node/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-3-memory-view/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-4-types/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-5-operations/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-6-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-7-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-8-vs-array/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-9-10-pros-cons/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-11-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-4-linked-lists-12-shortcuts/</loc></url>
+
+  <!-- Module 5: Stacks -->
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-1-definition/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-2-terms/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-3-operations-lab/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-4-error-states/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-5-implementation/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-6-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-8-applications/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-10-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-5-stacks-11-shortcuts/</loc></url>
+
+  <!-- Module 6: Queues -->
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-1-definition/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-2-terms/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-3-operations-lab/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-4-error-states/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-5-implementation/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-6-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-7-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-8-types/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-9-circular-queue/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-10-applications/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-11-comparison/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-12-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-6-queues-13-shortcuts/</loc></url>
+
+  <!-- Module 7: Trees -->
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-1-definition/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-2-terms/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-3-binary-tree/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-5-traversals/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-6-bst/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-7-bst-search/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-8-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-9-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-10-comparison/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-11-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-7-trees-12-shortcuts/</loc></url>
+
+  <!-- Module 8: Hashing -->
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-1-definition/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-2-hash-table/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-3-hash-function/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-4-collision/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-5-resolution/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-6-load-factor/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-7-time-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-8-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-10-applications/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-11-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-8-hashing-12-shortcuts/</loc></url>
+
+  <!-- Module 9: Searching -->
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-1-definition/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-2-linear-search/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-3-linear-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-4-binary-search/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-5-bs-visualizer/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-6-bs-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-7-space-complexity/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-8-comparison/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-9-structures/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-10-pitfalls/</loc></url>
+  <url><loc>https://studytheskill.com/dsa/module-9-searching-11-shortcuts/</loc></url>
+</urlset>

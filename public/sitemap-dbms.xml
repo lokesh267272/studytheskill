@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://studytheskill.com/dbms/what-is-dbms/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/data-abstraction-independence/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/schema-vs-instance/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/primary-foreign-keys/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/super-key-candidate-key/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/er-symbols-attributes/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/advanced-attributes/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/relationships-weak-entities/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/1nf-atomicity/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/2nf-partial-dependency/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/3nf-transitive-dependency/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/bcnf-strong-3nf/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/4nf-multi-valued-dependency/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/5nf-project-join/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/acid-properties/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/transaction-states/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/sql-select-where/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/group-by-having/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/joins-types/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/indexing-clustered-non-clustered/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/db-languages-ddl-dml/</loc></url>
+  <url><loc>https://studytheskill.com/dbms/triggers-cursors/</loc></url>
+</urlset>

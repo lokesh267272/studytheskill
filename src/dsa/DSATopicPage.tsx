@@ -5,6 +5,7 @@ import { SectionType } from './types';
 import { QuizComponent } from './components/Quiz.tsx';
 import { motion } from 'framer-motion';
 import { SketchyButton } from '../components/Controls/SketchyComponents';
+import { useSEO } from '../hooks/useSEO';
 
 // Helper to slugify text (must match dsaMeta.ts logic)
 const slugify = (text: string) => {
@@ -20,6 +21,16 @@ export const DSATopicPage = () => {
         slugify(section.module + '-' + (section.shortTitle || section.title)) === topicSlug
     );
     const currentSection = contentData[currentSectionIndex];
+
+    // Dynamic SEO
+    const currentSlug = currentSection
+        ? slugify(currentSection.module + '-' + (currentSection.shortTitle || currentSection.title))
+        : '';
+    useSEO(currentSection ? {
+        title: `${currentSection.title} – ${currentSection.module}`,
+        description: `Learn ${currentSection.title} in ${currentSection.module}. Interactive visuals, code examples, and quizzes on StudyTheSkill.`,
+        path: `/dsa/${currentSlug}/`,
+    } : {});
 
     if (!currentSection) {
         // Fallback to first section if not found
