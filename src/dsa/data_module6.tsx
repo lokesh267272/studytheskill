@@ -48,7 +48,8 @@ export const module6Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 601, question: "Queue follows which principle?", options: ["LIFO", "FIFO", "Random"], correctIndex: 1, explanation: "First person in line is served first." },
-            { id: 602, question: "Insertion in queue happens at?", options: ["Front", "Rear", "Middle"], correctIndex: 1, explanation: "You join the back of the line." }
+            { id: 602, question: "Insertion in queue happens at?", options: ["Front", "Rear", "Middle"], correctIndex: 1, explanation: "You join the back of the line." },
+            { id: 623, question: "Keyboard buffer uses which structure?", options: ["Stack", "Queue", "Tree"], correctIndex: 1, explanation: "Keystrokes are processed in order." }
         ]
     },
     {
@@ -101,7 +102,8 @@ export const module6Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 605, question: "Dequeue removes element from?", options: ["Rear", "Front", "Center"], correctIndex: 1, explanation: "FIFO principle." },
-            { id: 606, question: "Peek operation returns?", options: ["Rear element", "Front element", "Null"], correctIndex: 1, explanation: "It shows who is next in line." }
+            { id: 606, question: "Peek operation returns?", options: ["Rear element", "Front element", "Null"], correctIndex: 1, explanation: "It shows who is next in line." },
+            { id: 624, question: "Condition for empty queue (simple)?", options: ["Front == -1", "Front == 0", "Rear == 0"], correctIndex: 0, explanation: "Initial state." }
         ]
     },
     {

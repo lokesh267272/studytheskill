@@ -39,7 +39,8 @@ export const module7Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 701, question: "Tree is which type of data structure?", options: ["Linear", "Non-linear", "Circular"], correctIndex: 1, explanation: "It represents hierarchy, not a sequence." },
-            { id: 702, question: "The top node in a tree is called?", options: ["Head", "Top", "Root"], correctIndex: 2, explanation: "Like a real tree (but inverted)." }
+            { id: 702, question: "The top node in a tree is called?", options: ["Head", "Top", "Root"], correctIndex: 2, explanation: "Like a real tree (but inverted)." },
+            { id: 719, question: "Number of edges in a tree with N nodes?", options: ["N", "N-1", "N+1"], correctIndex: 1, explanation: "Every node except Root has 1 incoming edge." }
         ]
     },
     {
@@ -179,7 +180,8 @@ void preorder(struct Node* root) {
         ),
         mcqs: [
             { id: 711, question: "In a BST, the left child is?", options: ["Greater than Root", "Smaller than Root", "Equal to Root"], correctIndex: 1, explanation: "Standard BST property." },
-            { id: 712, question: "Inorder traversal of BST gives?", options: ["Random order", "Sorted order", "Reverse sorted"], correctIndex: 1, explanation: "Ascending order." }
+            { id: 712, question: "Inorder traversal of BST gives?", options: ["Random order", "Sorted order", "Reverse sorted"], correctIndex: 1, explanation: "Ascending order." },
+            { id: 720, question: "Minimum element in BST is located at?", options: ["Root", "Leftmost node", "Rightmost node"], correctIndex: 1, explanation: "Follow left children until null." }
         ]
     },
     {

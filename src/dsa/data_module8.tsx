@@ -100,7 +100,8 @@ export const module8Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 805, question: "Purpose of hash function?", options: ["Sort data", "Map key to index", "Compress data"], correctIndex: 1, explanation: "Calculates the position in the table." },
-            { id: 806, question: "A good hash function should?", options: ["Be slow", "Distribute keys uniformly", "Always return 0"], correctIndex: 1, explanation: "To minimize collisions." }
+            { id: 806, question: "A good hash function should?", options: ["Be slow", "Distribute keys uniformly", "Always return 0"], correctIndex: 1, explanation: "To minimize collisions." },
+            { id: 820, question: "If Hash Function always returns 0, it becomes?", options: ["Perfect Hashing", "Linked List (Collision)", "Tree"], correctIndex: 1, explanation: "All elements collide at index 0." }
         ]
     },
     {
@@ -183,7 +184,8 @@ export const module8Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 811, question: "Load factor is calculated as?", options: ["Table Size / Elements", "Elements / Table Size"], correctIndex: 1, explanation: "Density of the table." },
-            { id: 812, question: "High load factor leads to?", options: ["Faster search", "More collisions", "Less space"], correctIndex: 1, explanation: "Table gets crowded." }
+            { id: 812, question: "High load factor leads to?", options: ["Faster search", "More collisions", "Less space"], correctIndex: 1, explanation: "Table gets crowded." },
+            { id: 821, question: "As Load Factor increases, performance?", options: ["Improves", "Degrades", "Stays same"], correctIndex: 1, explanation: "More collisions occur." }
         ]
     },
     {

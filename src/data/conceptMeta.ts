@@ -27,7 +27,30 @@ export const COURSE_MODULES: Module[] = [
           why: 'Pata File systems lo unna issues (data repeat avvadam, mismatch avvadam) ni solve cheyadaniki.',
           example: 'Oracle, MySQL, SQL Server. (Excel kaadu - Excel oka spreadsheet matrame).',
           revisionHook: 'DBMS = Software Manager'
-        }
+        },
+        mcqs: [
+          {
+            id: 1,
+            question: "What is the primary function of a DBMS?",
+            options: ["To design operating systems", "To manage, store, and retrieve data efficiently", "To create graphical user interfaces"],
+            correctIndex: 1,
+            explanation: "DBMS is essentially a software that acts as an interface between the database and end users or application programs."
+          },
+          {
+            id: 2,
+            question: "Which of the following is NOT a DBMS example?",
+            options: ["MySQL", "Oracle", "Microsoft Excel"],
+            correctIndex: 2,
+            explanation: "Excel is a spreadsheet software, not a full-fledged Database Management System."
+          },
+          {
+            id: 3,
+            question: "Why is DBMS preferred over File Systems?",
+            options: ["It prevents data redundancy", "It is cheaper", "It is easier to install"],
+            correctIndex: 0,
+            explanation: "DBMS enforces rules to minimize duplicate data (redundancy) and inconsistency."
+          }
+        ]
       },
       {
         id: 't1-1',
@@ -49,7 +72,44 @@ export const COURSE_MODULES: Module[] = [
           why: 'Lopala storage lo emanna marchina, user apps disturb avvakunda undadaniki.',
           example: 'Car Dashboard (View) mariyu Engine (Physical). Engine ela pani chestundo teliyakunda car nadipochu.',
           revisionHook: 'Physical = Hard Disk | Logical = Structure | View = User Access'
-        }
+        },
+        mcqs: [
+          {
+            id: 4,
+            question: "Which level of abstraction describes 'what' data is stored?",
+            options: ["Physical Level", "Logical Level", "View Level"],
+            correctIndex: 1,
+            explanation: "Logical level defines the structure and constraints of data."
+          },
+          {
+            id: 5,
+            question: "Physical Data Independence means...",
+            options: ["Changing the conceptual schema without changing the external schema", "Changing the physical storage without affecting the conceptual schema", "Changing the view level without changing the physical level"],
+            correctIndex: 1,
+            explanation: "You can change hard drives or file organizations without breaking the logical structure."
+          },
+          {
+            id: 6,
+            question: "The user interacts primarily with which level?",
+            options: ["Physical Level", "Conceptual Level", "View Level"],
+            correctIndex: 2,
+            explanation: "The View Level is the external level tailored for end users."
+          },
+          {
+            id: 7,
+            question: "Hiding the complexity of implementation is called?",
+            options: ["Data Abstraction", "Data Mining", "Data Science"],
+            correctIndex: 0,
+            explanation: "Abstraction hides the complex details of how data is stored."
+          },
+          {
+            id: 8,
+            question: "Logical Data Independence is generally...?",
+            options: ["Easier to achieve than Physical", "Harder to achieve than Physical", "Impossible to achieve"],
+            correctIndex: 1,
+            explanation: "It is harder because changing the logical structure (tables/columns) usually requires application code changes."
+          }
+        ]
       },
       {
         id: 't1-2',
@@ -71,7 +131,30 @@ export const COURSE_MODULES: Module[] = [
           why: 'Design epudo okasari marutundi kani data eppudu marutu untundi.',
           example: 'Schema = "Student(Peru, Age)". Instance = "Row 1: Alice, 22".',
           revisionHook: 'Schema = Blueprint | Instance = Snapshot'
-        }
+        },
+        mcqs: [
+          {
+            id: 9,
+            question: "Which of the following rarely changes?",
+            options: ["Database Instance", "Database Schema", "Data Values"],
+            correctIndex: 1,
+            explanation: "Schema is the structural design (blueprint) which is static."
+          },
+          {
+            id: 10,
+            question: "The data in the database at a specific moment in time is called...?",
+            options: ["Schema", "Instance", "Independence"],
+            correctIndex: 1,
+            explanation: "Instance is the snapshot of data at a particular instant."
+          },
+          {
+            id: 11,
+            question: "Variable declaration in programming is analogous to?",
+            options: ["Instance", "Schema", "Query"],
+            correctIndex: 1,
+            explanation: "Defining 'int x' is the schema; 'x = 5' is the instance."
+          }
+        ]
       }
     ]
   },
@@ -100,7 +183,44 @@ export const COURSE_MODULES: Module[] = [
           why: 'Data repeat avvakunda undataniki PK, rendu tables madhya sambhandam (relationship) correct ga undataniki FK vadathamu.',
           example: 'College lo Student ID PK avthundhi, Class table lo unna Student ID FK avthundhi.',
           revisionHook: 'PK = Unique + Not Null | FK = Vere table tho link'
-        }
+        },
+        mcqs: [
+          {
+            id: 12,
+            question: "A Primary Key must be...?",
+            options: ["Unique and Not Null", "Unique and Nullable", "Duplicate and Not Null"],
+            correctIndex: 0,
+            explanation: "Primary Key uniquely identifies a record, so it cannot be duplicate or empty."
+          },
+          {
+            id: 13,
+            question: "A Foreign Key is used to...?",
+            options: ["Identify a record uniquely", "Establish a relationship between two tables", "Perform mathematical calculations"],
+            correctIndex: 1,
+            explanation: "Foreign Keys link data in one table to the data in another table."
+          },
+          {
+            id: 14,
+            question: "Can a Foreign Key contain NULL values?",
+            options: ["Yes, always", "No, never", "Yes, unless it is part of a Primary Key"],
+            correctIndex: 2,
+            explanation: "Standard Foreign Keys can be NULL, meaning no relationship exists for that row."
+          },
+          {
+            id: 15,
+            question: "Which key acts as a reference in another table?",
+            options: ["Primary Key", "Candidate Key", "Foreign Key"],
+            correctIndex: 2,
+            explanation: "It 'references' the Primary Key of another table."
+          },
+          {
+            id: 16,
+            question: "How many Primary Keys can a table have?",
+            options: ["Only one", "As many as needed", "Two"],
+            correctIndex: 0,
+            explanation: "A table can have only one Primary Key (though it can be composite)."
+          }
+        ]
       },
       {
         id: 't2-2',
@@ -122,7 +242,44 @@ export const COURSE_MODULES: Module[] = [
           why: 'Database fast ga pani cheyali ante manaki chinna ID kavali, anduke Candidate keys vetukuthamu.',
           example: '{ID, Name} Super Key avvochu, kani {ID} matrame Candidate Key avthundhi endukante idhi anitikante chinnadhi.',
           revisionHook: 'Candidate = Chinna/Minimal Super Key'
-        }
+        },
+        mcqs: [
+          {
+            id: 17,
+            question: "A Candidate Key is...?",
+            options: ["Any Super Key", "A Minimal Super Key", "A Maximal Super Key"],
+            correctIndex: 1,
+            explanation: "It is the smallest subset of a super key that can uniquely identify a tuple."
+          },
+          {
+            id: 18,
+            question: "Which statement is TRUE?",
+            options: ["Every Super Key is a Candidate Key", "Every Candidate Key is a Super Key", "Every Primary Key is a Super Key but not a Candidate Key"],
+            correctIndex: 1,
+            explanation: "Candidate keys are special Super Keys (minimal ones). So all Candidate Keys are Super Keys."
+          },
+          {
+            id: 19,
+            question: "If {ID, Email} is a Super Key, and {ID} is also a Super Key, then...?",
+            options: ["{ID, Email} is a Candidate Key", "{ID} is a Candidate Key", "Both are Candidate Keys"],
+            correctIndex: 1,
+            explanation: "{ID, Email} is not minimal because we can remove 'Email' and still identify the row."
+          },
+          {
+            id: 20,
+            question: "Can a table have multiple Candidate Keys?",
+            options: ["Yes", "No", "Only if there is no Primary Key"],
+            correctIndex: 0,
+            explanation: "Yes, you can have multiple candidates (e.g., ID, Email, Phone), but you pick one as Primary."
+          },
+          {
+            id: 21,
+            question: "Are NULL values allowed in a Candidate Key?",
+            options: ["Yes, depending on DBMS rules", "No, never", "Only one NULL allowed"],
+            correctIndex: 0,
+            explanation: "Generally, candidate keys should not be null, but standard definition is about uniqueness. PK is strictly Not Null."
+          }
+        ]
       }
     ]
   },
@@ -145,6 +302,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'Rect=Thing | Oval=Detail | Diamond=Action',
         animationType: 'er',
         slug: 'er-symbols-attributes',
+        mcqs: [
+          {
+            id: 22,
+            question: "In an ER Diagram, a rectangle represents...?",
+            options: ["Attribute", "Entity Set", "Relationship"],
+            correctIndex: 1,
+            explanation: "Rectangles are used for Entity Sets."
+          },
+          {
+            id: 23,
+            question: "Ellipses (Ovals) are used to represent...?",
+            options: ["Entities", "Attributes", "Relationships"],
+            correctIndex: 1,
+            explanation: "Ellipses represent attributes (properties) of an entity."
+          },
+          {
+            id: 24,
+            question: "A Diamond shape represents...?",
+            options: ["Relationship", "Weak Entity", "Multivalued Attribute"],
+            correctIndex: 0,
+            explanation: "Diamonds represent the relationship between entities."
+          },
+          {
+            id: 25,
+            question: "A Primary Key attribute is usually represented by...?",
+            options: ["Dashed Ellipse", "Underlined Ellipse", "Double Ellipse"],
+            correctIndex: 1,
+            explanation: "Underlining the text inside the oval denotes a primary key."
+          },
+          {
+            id: 26,
+            question: "Which symbol represents a Weak Entity?",
+            options: ["Double Rectangle", "Dashed Rectangle", "Double Diamond"],
+            correctIndex: 0,
+            explanation: "A double-bordered rectangle indicates a Weak Entity Set."
+          }
+        ]
       },
       {
         id: 't3-2',
@@ -160,6 +354,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'Dashed = Calculated | Double = List',
         animationType: 'er',
         slug: 'advanced-attributes',
+        mcqs: [
+          {
+            id: 27,
+            question: "An attribute that can have multiple values is shown by...?",
+            options: ["Double Oval", "Dashed Oval", "Rectangle"],
+            correctIndex: 0,
+            explanation: "Double Oval = Multi-valued (like Phone numbers: [123, 456])."
+          },
+          {
+            id: 28,
+            question: "Attributes that are calculated from others are called...?",
+            options: ["Derived Attributes", "Composite Attributes", "Simple Attributes"],
+            correctIndex: 0,
+            explanation: "Age is derived from DateOfBirth."
+          },
+          {
+            id: 29,
+            question: "Address (Street, City, Zip) is an example of...?",
+            options: ["Composite Attribute", "Derived Attribute", "Multivalued Attribute"],
+            correctIndex: 0,
+            explanation: "Composite attributes can be divided into smaller sub-parts."
+          }
+        ]
       },
       {
         id: 't3-3',
@@ -175,6 +392,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'Double Rect = Weak (Needs Parent)',
         animationType: 'er',
         slug: 'relationships-weak-entities',
+        mcqs: [
+          {
+            id: 30,
+            question: "A Weak Entity depends on...?",
+            options: ["Its own Primary Key", "A Strong (Identifying) Entity", "A Foreign Key in another database"],
+            correctIndex: 1,
+            explanation: "It cannot exist without being linked to a Strong Entity."
+          },
+          {
+            id: 31,
+            question: "Does a Weak Entity have a Primary Key?",
+            options: ["Yes", "No, it has a Partial Key", "No, it has no keys at all"],
+            correctIndex: 1,
+            explanation: "It has a discriminator (partial key) that works only in combination with the Strong Entity's key."
+          },
+          {
+            id: 32,
+            question: "The discriminator of a weak entity is represented by?",
+            options: ["Solid Underline", "Dashed Underline", "No Underline"],
+            correctIndex: 1,
+            explanation: "Dashed underline indicates the partial key."
+          },
+          {
+            id: 33,
+            question: "The relationship linking a weak entity to its owner is called?",
+            options: ["Identifying Relationship", "Weak Relationship", "Recursive Relationship"],
+            correctIndex: 0,
+            explanation: "It's often shown as a Double Diamond."
+          },
+          {
+            id: 34,
+            question: "If the Strong Entity is deleted, what happens to the Weak Entity?",
+            options: ["It remains as orphan", "It is also deleted", "It becomes strong"],
+            correctIndex: 1,
+            explanation: "Since it existence-dependent, it usually gets deleted (Cascade Delete)."
+          }
+        ]
       }
     ]
   },
@@ -197,6 +451,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: '1NF = One Value Only',
         animationType: 'norm_1nf',
         slug: '1nf-atomicity',
+        mcqs: [
+          {
+            id: 35,
+            question: "1NF requires that all attributes must contain...?",
+            options: ["Atomic Values", "Lists of Values", "Composite Values"],
+            correctIndex: 0,
+            explanation: "Atomicity mean cannot be further divided."
+          },
+          {
+            id: 36,
+            question: "Which of these violations prevents a table from being in 1NF?",
+            options: ["Repeating Groups/Arrays", "Partial Dependency", "Transitive Dependency"],
+            correctIndex: 0,
+            explanation: "Storing multiple values in a single cell (like 'Red, Blue') violates 1NF."
+          },
+          {
+            id: 37,
+            question: "To convert a table to 1NF, you should...?",
+            options: ["Create a separate row for each value", "Delete the column", "Merge columns"],
+            correctIndex: 0,
+            explanation: "Flatten the data so every cell has strictly one value."
+          }
+        ]
       },
       {
         id: 't4-2',
@@ -212,6 +489,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: '2NF = whole Key, Not Just a Piece',
         animationType: 'norm_2nf',
         slug: '2nf-partial-dependency',
+        mcqs: [
+          {
+            id: 38,
+            question: "A table is in 2NF if it is in 1NF and...?",
+            options: ["No Partial Dependencies exist", "No Transitive Dependencies exist", "No Multi-valued Dependencies exist"],
+            correctIndex: 0,
+            explanation: "All non-key attributes must depend on the FULL Primary Key."
+          },
+          {
+            id: 39,
+            question: "Partial Dependency occurs when...?",
+            options: ["A non-key attribute depends on part of a composite key", "A key depends on another key", "An attribute depends on a non-key"],
+            correctIndex: 0,
+            explanation: "It only happens with Composite Keys (Key made of A + B)."
+          },
+          {
+            id: 40,
+            question: "If a table has a single-column Primary Key, is it automatically in 2NF?",
+            options: ["Yes", "No", "Depends on data"],
+            correctIndex: 0,
+            explanation: "You can't have a 'partial' dependency if the key has only one part!"
+          },
+          {
+            id: 41,
+            question: "Which anomaly is reduced by 2NF?",
+            options: ["Update Anomaly", "Read Anomaly", "Deadlock"],
+            correctIndex: 0,
+            explanation: "By moving partial dependencies to their own table, you update data in one place only."
+          },
+          {
+            id: 42,
+            question: "To fix a 2NF violation, we usually...?",
+            options: ["Decompose the table into two", "Add more columns", "Delete rows"],
+            correctIndex: 0,
+            explanation: "Split the table so the partial dependency gets its own full key in a new table."
+          }
+        ]
       },
       {
         id: 't4-3',
@@ -227,6 +541,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: '3NF = No A->B->C Chains',
         animationType: 'norm_3nf',
         slug: '3nf-transitive-dependency',
+        mcqs: [
+          {
+            id: 43,
+            question: "3NF deals with removing...?",
+            options: ["Transitive Dependencies", "Partial Dependencies", "Cyclic Dependencies"],
+            correctIndex: 0,
+            explanation: "If A -> B and B -> C, then A -> C is a transitive dependency."
+          },
+          {
+            id: 44,
+            question: "A table is in 3NF if it is in 2NF and...?",
+            options: ["No non-prime attribute determines another non-prime attribute", "All attributes are atomic", "It has no composite keys"],
+            correctIndex: 0,
+            explanation: "Non-keys should not depend on other non-keys."
+          },
+          {
+            id: 45,
+            question: "Which of these is a Transitive Dependency (if Key is A)?",
+            options: ["A -> B, B -> C", "A -> B, A -> C", "A -> B, C -> D"],
+            correctIndex: 0,
+            explanation: "C depends on B, which depends on Key A. C is transitively dependent on A."
+          },
+          {
+            id: 46,
+            question: "Who said 'The Key, the Whole Key, and Nothing but the Key'?",
+            options: ["Bill Kent (about 3NF)", "Codd", "Date"],
+            correctIndex: 0,
+            explanation: "It's a famous mnemonic for 3NF."
+          },
+          {
+            id: 47,
+            question: "If ZipCode defines City, and Student defines ZipCode, where should City be stored?",
+            options: ["In a separate ZipCodes table", "In the Student table", "In a new City table linked to Student"],
+            correctIndex: 0,
+            explanation: "Store City once per ZipCode, not once per Student."
+          }
+        ]
       },
       {
         id: 't4-4',
@@ -242,6 +593,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'BCNF = Boss Must Be A Key',
         animationType: 'norm_bcnf',
         slug: 'bcnf-strong-3nf',
+        mcqs: [
+          {
+            id: 48,
+            question: "BCNF is a stronger version of...?",
+            options: ["3NF", "2NF", "1NF"],
+            correctIndex: 0,
+            explanation: "It covers edge cases that 3NF misses."
+          },
+          {
+            id: 49,
+            question: "For BCNF, if A -> B, then A must be...?",
+            options: ["A Super Key", "A Primary Key", "A Foreign Key"],
+            correctIndex: 0,
+            explanation: "The determinant (LHS) must ALWAYS be a super key."
+          },
+          {
+            id: 50,
+            question: "Which of the following creates a BCNF violation?",
+            options: ["A non-key attribute determining a part of a composite key", "A key determining a non-key", "A key determining another key"],
+            correctIndex: 0,
+            explanation: "If a regular column determines part of the Primary Key, it's 3NF but not BCNF."
+          },
+          {
+            id: 51,
+            question: "Is every BCNF table also in 3NF?",
+            options: ["Yes", "No", "Sometimes"],
+            correctIndex: 0,
+            explanation: "Since BCNF is stricter, it automatically satisfies 3NF rules."
+          },
+          {
+            id: 52,
+            question: "BCNF mainly deals with anomalies in tables that have...?",
+            options: ["Multiple overlapping candidate keys", "Single Primary Key", "No Keys"],
+            correctIndex: 0,
+            explanation: "It fixes issues where keys share columns (overlap)."
+          }
+        ]
       },
       {
         id: 't4-5',
@@ -257,6 +645,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: '4NF = Separate Your Lists',
         animationType: 'norm_4nf',
         slug: '4nf-multi-valued-dependency',
+        mcqs: [
+          {
+            id: 53,
+            question: "4NF eliminates...?",
+            options: ["Multi-valued Dependencies", "Join Dependencies", "Functional Dependencies"],
+            correctIndex: 0,
+            explanation: "Independent one-to-many relationships shouldn't be mixed."
+          },
+          {
+            id: 54,
+            question: "Which represents a Multi-valued Dependency?",
+            options: ["A ->> B", "A -> B", "A <-> B"],
+            correctIndex: 0,
+            explanation: "The double arrow (->>) signifies multi-valued dependency."
+          },
+          {
+            id: 55,
+            question: "If a user has 3 phones and 3 emails, storing them in one table causes?",
+            options: ["Cartesian Product (Data Explosion)", "Loss of data", "Faster retrieval"],
+            correctIndex: 0,
+            explanation: "You get 3x3=9 rows to represent simple data."
+          }
+        ]
       },
       {
         id: 't4-6',
@@ -272,6 +683,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: '5NF = Perfect 3-Way Fit',
         animationType: 'norm_5nf',
         slug: '5nf-project-join',
+        mcqs: [
+          {
+            id: 56,
+            question: "5NF deals with...?",
+            options: ["Join Dependency", "Multi-valued Dependency", "Partial Dependency"],
+            correctIndex: 0,
+            explanation: "It ensures a table can be reconstructed from its smaller pieces without error."
+          },
+          {
+            id: 57,
+            question: "A table is in 5NF if...?",
+            options: ["Every Join Dependency is implied by the Candidate Keys", "It is in 4NF", "It has no keys"],
+            correctIndex: 0,
+            explanation: "This basically means the decomposition is lossless and valid."
+          },
+          {
+            id: 58,
+            question: "5NF is also known as...?",
+            options: ["Project-Join Normal Form (PJNF)", "Domain-Key Normal Form", "Elementary Normal Form"],
+            correctIndex: 0,
+            explanation: "Because it focuses on Projections and Joins."
+          }
+        ]
       }
     ]
   },
@@ -300,6 +734,43 @@ export const COURSE_MODULES: Module[] = [
           { label: 'Durability', text: 'Written in Stone. Once a transaction is committed, it stays saved even if the power goes out.' }
         ],
         slug: 'acid-properties',
+        mcqs: [
+          {
+            id: 59,
+            question: "Atomicity guarantees that...?",
+            options: ["The transaction is fully completed or not at all", "The database remains consistent", "The data is permanently saved"],
+            correctIndex: 0,
+            explanation: "Atomicity is the 'All or Nothing' property."
+          },
+          {
+            id: 60,
+            question: "Which property ensures that a committed transaction is never lost?",
+            options: ["Durability", "Atomicity", "Isolation"],
+            correctIndex: 0,
+            explanation: "Durability means changes are permanent (written to disk) even if the system crashes."
+          },
+          {
+            id: 61,
+            question: "Isolation ensures that...?",
+            options: ["Concurrent transactions do not interfere with each other", "Transactions are atomic", "Constraints are enforced"],
+            correctIndex: 0,
+            explanation: "It treats every transaction as if it's the only one running in the system."
+          },
+          {
+            id: 62,
+            question: "Consistency in ACID means...?",
+            options: ["Data satisfies all integrity constraints", "Data is always available", "Data is distributed"],
+            correctIndex: 0,
+            explanation: "The database moves from one valid state to another valid state."
+          },
+          {
+            id: 63,
+            question: "Who is responsible for Atomicity?",
+            options: ["Transaction Manager", "Recovery Manager", "Query Optimizer"],
+            correctIndex: 0,
+            explanation: "The Transaction Manager ensures that the transaction is treated as a single unit."
+          }
+        ]
       },
       {
         id: 't5-2',
@@ -315,6 +786,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'Active -> Partial -> Committed',
         animationType: 'acid',
         slug: 'transaction-states',
+        mcqs: [
+          {
+            id: 64,
+            question: "The initial state of a transaction is...?",
+            options: ["Active", "Partially Committed", "Committed"],
+            correctIndex: 0,
+            explanation: "A transaction starts in the Active state."
+          },
+          {
+            id: 65,
+            question: "If a transaction fails, it moves to which state?",
+            options: ["Aborted (Failed)", "Committed", "Terminated"],
+            correctIndex: 0,
+            explanation: "Failure leads to abort/rollback."
+          },
+          {
+            id: 66,
+            question: "A transaction is 'Committed' when...?",
+            options: ["All changes are permanently saved", "The last statement executes", "The user logs out"],
+            correctIndex: 0,
+            explanation: "Commit means the changes are durable."
+          }
+        ]
       }
     ]
   },
@@ -337,6 +831,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'SELECT cols FROM table WHERE criteria',
         animationType: 'sql',
         slug: 'sql-select-where',
+        mcqs: [
+          {
+            id: 67,
+            question: "Which keyword is used to retrieve data?",
+            options: ["SELECT", "GET", "FETCH"],
+            correctIndex: 0,
+            explanation: "SELECT is the standard SQL command to query data."
+          },
+          {
+            id: 68,
+            question: "To filter rows, we use...?",
+            options: ["WHERE", "FILTER", "HAVING"],
+            correctIndex: 0,
+            explanation: "WHERE clause filters records before any grouping."
+          },
+          {
+            id: 69,
+            question: "To sort the result set, we use...?",
+            options: ["ORDER BY", "SORT BY", "ALIGN"],
+            correctIndex: 0,
+            explanation: "ORDER BY is used for sorting in Ascending or Descending order."
+          },
+          {
+            id: 70,
+            question: "Which wildcard selects ALL columns?",
+            options: ["*", "%", "ALL"],
+            correctIndex: 0,
+            explanation: "SELECT * means select all columns."
+          },
+          {
+            id: 71,
+            question: "What does DISTINCT do?",
+            options: ["Removes duplicate rows", "Deletes the table", "Sorts the data"],
+            correctIndex: 0,
+            explanation: "SELECT DISTINCT removes duplicate values from the result."
+          }
+        ]
       },
       {
         id: 't6-2',
@@ -352,6 +883,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'WHERE = Rows | HAVING = Groups',
         animationType: 'sql',
         slug: 'group-by-having',
+        mcqs: [
+          {
+            id: 72,
+            question: "GROUP BY is used to...?",
+            options: ["Group rows with same values", "Sort rows", "Filter rows"],
+            correctIndex: 0,
+            explanation: "It groups rows that have the same values into summary rows."
+          },
+          {
+            id: 73,
+            question: "Which clause filters grouped data?",
+            options: ["HAVING", "WHERE", "FILTER"],
+            correctIndex: 0,
+            explanation: "HAVING is like WHERE but for groups/aggregates."
+          },
+          {
+            id: 74,
+            question: "Can WHERE be used with GROUP BY?",
+            options: ["Yes, before GROUP BY", "Yes, after GROUP BY", "No"],
+            correctIndex: 0,
+            explanation: "WHERE filters rows first, then GROUP BY creates groups, then HAVING filters groups."
+          },
+          {
+            id: 75,
+            question: "Which function is an Aggregate Function?",
+            options: ["SUM()", "UPPER()", "LEN()"],
+            correctIndex: 0,
+            explanation: "SUM, AVG, COUNT, MIN, MAX are aggregate functions."
+          },
+          {
+            id: 76,
+            question: "If you group by 'Department', the result will have...?",
+            options: ["One row per department", "One row per employee", "No rows"],
+            correctIndex: 0,
+            explanation: "It collapses multiple rows into unique group representatives."
+          }
+        ]
       }
     ]
   },
@@ -374,6 +942,43 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'Inner=Match | Left=All Left | Full=Everyone',
         animationType: 'joins',
         slug: 'joins-types',
+        mcqs: [
+          {
+            id: 77,
+            question: "Which join returns only matching rows?",
+            options: ["Inner Join", "Left Join", "Right Join"],
+            correctIndex: 0,
+            explanation: "Inner Join returns records that have matching values in both tables."
+          },
+          {
+            id: 78,
+            question: "Left Join returns...?",
+            options: ["All left rows + matched right rows", "All right rows + matched left rows", "Only matched rows"],
+            correctIndex: 0,
+            explanation: "It keeps everything from the 'Left' table regardless of matches."
+          },
+          {
+            id: 79,
+            question: "A cross join (Cartesian product) of two tables with 10 rows each produces...?",
+            options: ["100 rows", "20 rows", "10 rows"],
+            correctIndex: 0,
+            explanation: "10 * 10 = 100 rows."
+          },
+          {
+            id: 80,
+            question: "Which join returns all rows from both tables?",
+            options: ["Full Outer Join", "Inner Join", "Left Join"],
+            correctIndex: 0,
+            explanation: "Full Outer Join combines the results of both Left and Right joins."
+          },
+          {
+            id: 81,
+            question: "If there is no match in a Left Join, the result for the right table is...?",
+            options: ["NULL", "Zero", "Error"],
+            correctIndex: 0,
+            explanation: "Unmatched columns are filled with NULL."
+          }
+        ]
       }
     ]
   },
@@ -396,6 +1001,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'Clustered = 1 (Physical) | Non-Clustered = Many (Logical)',
         animationType: 'indexing',
         slug: 'indexing-clustered-non-clustered',
+        mcqs: [
+          {
+            id: 82,
+            question: "A Clustered Index determines the...?",
+            options: ["Physical order of data", "Logical order of data", "Backup schedule"],
+            correctIndex: 0,
+            explanation: "It sorts the actual data rows on the disk."
+          },
+          {
+            id: 83,
+            question: "How many Clustered Indexes can a table have?",
+            options: ["One", "Many", "None"],
+            correctIndex: 0,
+            explanation: "Since data can be physically sorted in only one way, there is only one clustered index."
+          },
+          {
+            id: 84,
+            question: "A Non-Clustered Index is like...?",
+            options: ["The index at the back of a book", "The table of contents", "The cover of the book"],
+            correctIndex: 0,
+            explanation: "It points to the location of the data, but doesn't rearrange the data itself."
+          }
+        ]
       }
     ]
   },
@@ -418,6 +1046,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'DDL=Structure | DML=Data | DCL=Permissions | TCL=Savepoints',
         animationType: 'languages',
         slug: 'db-languages-ddl-dml',
+        mcqs: [
+          {
+            id: 85,
+            question: "Which of the following is a DDL command?",
+            options: ["CREATE", "INSERT", "SELECT"],
+            correctIndex: 0,
+            explanation: "CREATE defines the structure (schema) of the database."
+          },
+          {
+            id: 86,
+            question: "DELETE is a ... command?",
+            options: ["DML", "DDL", "DCL"],
+            correctIndex: 0,
+            explanation: "DELETE manipulates the data within the table."
+          },
+          {
+            id: 87,
+            question: "GRANT and REVOKE are examples of...?",
+            options: ["DCL", "TCL", "DML"],
+            correctIndex: 0,
+            explanation: "Data Control Language (DCL) manages permissions."
+          }
+        ]
       }
     ]
   },
@@ -440,6 +1091,29 @@ export const COURSE_MODULES: Module[] = [
         revisionHook: 'Trigger = Automatic Auto-Pilot',
         animationType: 'triggers',
         slug: 'triggers-cursors',
+        mcqs: [
+          {
+            id: 88,
+            question: "A Trigger executes when...?",
+            options: ["An event (Insert/Update/Delete) occurs", "The user calls it", "The database starts"],
+            correctIndex: 0,
+            explanation: "It is event-driven and runs automatically."
+          },
+          {
+            id: 89,
+            question: "Triggers are often used for...?",
+            options: ["Auditing and logging changes", "Creating tables", "Backup recovery"],
+            correctIndex: 0,
+            explanation: "They are great for tracking who changed what automatically."
+          },
+          {
+            id: 90,
+            question: "Can a Trigger return a value?",
+            options: ["No", "Yes", "Only integers"],
+            correctIndex: 0,
+            explanation: "Triggers do not return values; they perform actions."
+          }
+        ]
       }
     ]
   }

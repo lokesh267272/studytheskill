@@ -3,12 +3,17 @@ import { Topic } from '../types';
 import { AnimationCanvas } from './AnimationEngine/AnimationCanvas';
 import { TeacherNote, SketchyHighlight, SketchyBox, SketchyButton } from './Controls/SketchyComponents';
 import { Lightbulb, AlertTriangle, CheckCircle2, Languages } from 'lucide-react';
+import { QuizComponent } from '../dsa/components/Quiz';
+import { COURSE_MODULES } from '../data/conceptMeta';
 
 interface Props {
   topic: Topic;
 }
 
+import { useNavigate } from 'react-router-dom';
+
 export const TopicViewer: React.FC<Props> = ({ topic }) => {
+  const navigate = useNavigate();
   const [isTranslated, setIsTranslated] = useState(false);
   const isModule1 = topic.id.startsWith('t1-');
   const isModule2 = topic.id.startsWith('t2-');
@@ -18,7 +23,37 @@ export const TopicViewer: React.FC<Props> = ({ topic }) => {
     setIsTranslated(false);
   }, [topic.id]);
 
+  const handleQuizComplete = () => {
+    // Find current topic index
+    const allTopics = COURSE_MODULES.flatMap(m => m.topics);
+    const currentIndex = allTopics.findIndex(t => t.id === topic.id);
+
+    // Navigate to next topic if exists
+    if (currentIndex < allTopics.length - 1) {
+      const nextTopic = allTopics[currentIndex + 1];
+      navigate(`/dbms/${nextTopic.slug}`);
+      window.scrollTo(0, 0);
+    } else {
+      // End of course - maybe go back to home or show completion
+      alert("Congratulations! You have completed the entire DBMS course!");
+      navigate('/dbms');
+    }
+  };
+
+  // Calculate Next/Prev Topics
+  const allTopics = COURSE_MODULES.flatMap(m => m.topics);
+  const currentIndex = allTopics.findIndex(t => t.id === topic.id);
+  const prevTopic = currentIndex > 0 ? allTopics[currentIndex - 1] : null;
+  const nextTopic = currentIndex < allTopics.length - 1 ? allTopics[currentIndex + 1] : null;
+
+  const navigateToTopic = (slug: string) => {
+    navigate(`/dbms/${slug}`);
+    window.scrollTo(0, 0);
+  };
+
   const displayTitle = isTranslated && topic.telugu ? topic.telugu.title : topic.title;
+  // ... rest of component ...
+
   const displayDefinition = isTranslated && topic.telugu ? topic.telugu.definition : topic.definition;
   const displayWhy = isTranslated && topic.telugu ? topic.telugu.why : topic.why;
   const displayExample = isTranslated && topic.telugu ? topic.telugu.example : topic.example;
@@ -26,6 +61,24 @@ export const TopicViewer: React.FC<Props> = ({ topic }) => {
 
   return (
     <div className="max-w-7xl mx-auto p-4 md:p-8 lg:p-12">
+      {/* Top Navigation */}
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          {prevTopic ? (
+            <SketchyButton onClick={() => navigateToTopic(prevTopic.slug)} className="text-sm px-4 py-2">
+              &lt;- Prev Topic
+            </SketchyButton>
+          ) : <div />}
+        </div>
+        <div>
+          {nextTopic ? (
+            <SketchyButton onClick={() => navigateToTopic(nextTopic.slug)} className="text-sm px-4 py-2">
+              Next Topic -&gt;
+            </SketchyButton>
+          ) : <div />}
+        </div>
+      </div>
+
       {/* Title Header */}
       <div className="mb-10 border-b-4 border-black/10 pb-6 pr-12 md:pr-0 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
@@ -151,6 +204,17 @@ export const TopicViewer: React.FC<Props> = ({ topic }) => {
             </div>
           </div>
         </div>
+
+        {/* Topic Quiz Section */}
+        {topic.mcqs && topic.mcqs.length > 0 && (
+          <div className="mt-16 pt-8 border-t-4 border-black/10">
+            <div className="flex items-center gap-3 mb-8">
+              <span className="bg-black text-white px-3 py-1 text-sm font-bold transform -rotate-2">CHECK YOUR KNOWLEDGE</span>
+              <h3 className="text-3xl font-black text-slate-800">Topic Quiz</h3>
+            </div>
+            <QuizComponent mcqs={topic.mcqs} onComplete={handleQuizComplete} />
+          </div>
+        )}
 
       </div>
     </div>

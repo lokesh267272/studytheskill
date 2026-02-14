@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { contentData } from './data';
 import { SectionType } from './types';
 import { QuizComponent } from './components/Quiz.tsx';
 import { motion } from 'framer-motion';
+import { SketchyButton } from '../components/Controls/SketchyComponents';
 
 // Helper to slugify text (must match dsaMeta.ts logic)
 const slugify = (text: string) => {
@@ -12,11 +13,13 @@ const slugify = (text: string) => {
 
 export const DSATopicPage = () => {
     const { topicSlug } = useParams();
+    const navigate = useNavigate();
 
-    // Find section by slug
-    const currentSection = contentData.find(section =>
+    // Find section index by slug
+    const currentSectionIndex = contentData.findIndex(section =>
         slugify(section.module + '-' + (section.shortTitle || section.title)) === topicSlug
     );
+    const currentSection = contentData[currentSectionIndex];
 
     if (!currentSection) {
         // Fallback to first section if not found
@@ -28,6 +31,24 @@ export const DSATopicPage = () => {
         return <div className="p-8 text-center">Topic not found</div>;
     }
 
+    const prevSection = currentSectionIndex > 0 ? contentData[currentSectionIndex - 1] : null;
+    const nextSection = currentSectionIndex < contentData.length - 1 ? contentData[currentSectionIndex + 1] : null;
+
+    const navigateToSection = (section: typeof contentData[0]) => {
+        const slug = slugify(section.module + '-' + (section.shortTitle || section.title));
+        navigate(`/dsa/${slug}`);
+        window.scrollTo(0, 0);
+    };
+
+    const handleQuizComplete = () => {
+        if (nextSection) {
+            navigateToSection(nextSection);
+        } else {
+            alert("Congratulations! You have completed the entire DSA course!");
+            navigate('/dsa');
+        }
+    };
+
     return (
         <motion.div
             key={currentSection.id}
@@ -36,6 +57,24 @@ export const DSATopicPage = () => {
             exit={{ opacity: 0, x: -20 }}
             className="space-y-8 p-4 md:p-8 max-w-4xl mx-auto"
         >
+            {/* Top Navigation */}
+            <div className="flex justify-between items-center mb-6">
+                <div>
+                    {prevSection ? (
+                        <SketchyButton onClick={() => navigateToSection(prevSection)} className="text-sm px-4 py-2">
+                            &lt;- Prev Topic
+                        </SketchyButton>
+                    ) : <div />}
+                </div>
+                <div>
+                    {nextSection ? (
+                        <SketchyButton onClick={() => navigateToSection(nextSection)} className="text-sm px-4 py-2">
+                            Next Topic -&gt;
+                        </SketchyButton>
+                    ) : <div />}
+                </div>
+            </div>
+
             <div className="border-b-2 border-black pb-4">
                 <div className="mb-2">
                     <span className="inline-block bg-black text-white text-xs px-2 py-1 rounded font-bold">{currentSection.module}</span>
@@ -59,7 +98,7 @@ export const DSATopicPage = () => {
                         <span className="bg-black text-white px-2 py-1 mr-2 text-sm transform -rotate-3">Quick Check</span>
                         Concept Quiz
                     </h3>
-                    <QuizComponent mcqs={currentSection.mcqs} />
+                    <QuizComponent mcqs={currentSection.mcqs} onComplete={handleQuizComplete} />
                 </div>
             )}
         </motion.div>

@@ -7,37 +7,37 @@ import { Search, Clock, Box, Database, Zap, AlertTriangle } from 'lucide-react';
 // 1. Comparison: Turtle vs Rabbit (Simple vs Efficient)
 export const SpeedComparison: React.FC = () => {
     const [race, setRace] = useState(false);
-    
+
     return (
         <div className="flex flex-col gap-4 w-full">
-             <div className="flex justify-between items-center bg-gray-50 p-4 border-2 border-black rounded-lg relative overflow-hidden h-32 shadow-inner">
+            <div className="flex justify-between items-center bg-gray-50 p-4 border-2 border-black rounded-lg relative overflow-hidden h-32 shadow-inner">
                 {/* Slow Algorithm */}
-                <motion.div 
-                    animate={race ? { x: 200, rotate: [0, 5, -5, 0] } : { x: 0 }} 
+                <motion.div
+                    animate={race ? { x: 200, rotate: [0, 5, -5, 0] } : { x: 0 }}
                     transition={{ duration: 4, ease: "linear" }}
                     className="absolute top-4 left-2 flex flex-col items-center z-10"
                 >
                     <Box size={32} className="text-red-500 drop-shadow-sm" />
-                    <span className="text-sm font-bold font-hand">O(n²)</span>
+                    <span className="text-sm font-bold font-hand">O(n)</span>
                 </motion.div>
 
                 {/* Fast Algorithm */}
-                <motion.div 
-                    animate={race ? { x: 280, scale: [1, 1.1, 1] } : { x: 0 }} 
+                <motion.div
+                    animate={race ? { x: 280, scale: [1, 1.1, 1] } : { x: 0 }}
                     transition={{ duration: 1, ease: "circOut" }}
                     className="absolute bottom-4 left-2 flex flex-col items-center z-10"
                 >
                     <Zap size={32} className="text-yellow-500 drop-shadow-sm" />
-                    <span className="text-sm font-bold font-hand">O(n)</span>
+                    <span className="text-sm font-bold font-hand">O(1)</span>
                 </motion.div>
 
                 {/* Track markings */}
                 <div className="absolute bottom-0 left-0 w-full h-px bg-gray-300"></div>
-                
+
                 {/* Finish Line */}
                 <div className="absolute right-10 top-0 bottom-0 w-2 bg-black/10 border-l-2 border-dashed border-black"></div>
             </div>
-            <button 
+            <button
                 onClick={() => setRace(!race)}
                 className="self-center bg-black text-white px-6 py-2 font-hand font-bold rounded shadow-sketch hover:scale-105 transition-transform"
             >
@@ -66,21 +66,21 @@ export const LoopVisualizer: React.FC = () => {
         <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-4 w-full justify-center">
                 <span className="font-bold text-lg font-hand">Input (n): {n}</span>
-                <input 
-                    type="range" min="1" max="10" value={n} 
+                <input
+                    type="range" min="1" max="10" value={n}
                     onChange={(e) => { setN(parseInt(e.target.value)); setCount(0); setRunning(false); }}
                     className="border-2 border-black accent-black cursor-pointer"
                 />
             </div>
-            
+
             <div className="flex gap-2 p-4 min-h-[60px] flex-wrap justify-center">
                 <AnimatePresence>
                     {Array.from({ length: n }).map((_, i) => (
                         <motion.div
                             key={i}
                             initial={{ scale: 0, rotate: -10 }}
-                            animate={{ 
-                                scale: i < count ? 1.1 : 1, 
+                            animate={{
+                                scale: i < count ? 1.1 : 1,
                                 opacity: i < count ? 1 : 0.4,
                                 rotate: i < count ? 0 : -5,
                                 backgroundColor: i < count ? '#fef08a' : '#f3f4f6'
@@ -95,8 +95,8 @@ export const LoopVisualizer: React.FC = () => {
             </div>
 
             <div className="text-xl font-bold font-hand">Operations: {count}</div>
-            
-            <button 
+
+            <button
                 onClick={() => { setCount(0); setRunning(true); }}
                 className="bg-accent border-2 border-black px-4 py-2 rounded shadow-sketch font-bold hover:bg-blue-300 transition-colors"
                 disabled={running}
@@ -125,7 +125,7 @@ export const SearchVisualizer: React.FC = () => {
             if (currentIndex >= items.length) {
                 return;
             }
-            
+
             if (items[currentIndex] === target) {
                 setFound(true);
             } else {
@@ -157,7 +157,7 @@ export const SearchVisualizer: React.FC = () => {
                         {val}
                         {/* Gliding Search Highlight */}
                         {idx === currentIndex && !found && (
-                            <motion.div 
+                            <motion.div
                                 layoutId="search-highlight"
                                 className="absolute inset-0 border-4 border-blue-500 bg-blue-100/50 z-20 rounded-sm"
                                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -166,7 +166,7 @@ export const SearchVisualizer: React.FC = () => {
                     </div>
                 ))}
             </div>
-            
+
             <div className="h-8 font-bold text-lg font-hand">
                 {found ? `Found at index ${currentIndex}! Total checks: ${currentIndex + 1}` : currentIndex > -1 ? `Checking index ${currentIndex}...` : "Select a case"}
             </div>
@@ -198,7 +198,7 @@ export const ComplexityGraph: React.FC<{ types: ('O(1)' | 'O(log n)' | 'O(n)' | 
 
     return (
         <div className="h-72 w-full bg-white border-2 border-black p-4 rounded-lg relative shadow-sketch">
-             <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={data} margin={{ top: 10, right: 30, left: 10, bottom: 30 }}>
                     <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
                     <XAxis dataKey="n" tick={false} stroke="black">
@@ -207,17 +207,17 @@ export const ComplexityGraph: React.FC<{ types: ('O(1)' | 'O(log n)' | 'O(n)' | 
                     <YAxis tick={false} stroke="black">
                         <Label value="Operations / Time" angle={-90} position="insideLeft" offset={0} style={{ fontFamily: 'Patrick Hand', fontWeight: 'bold', fill: 'black' }} />
                     </YAxis>
-                    <Tooltip 
+                    <Tooltip
                         contentStyle={{ border: '2px solid black', borderRadius: '8px', fontFamily: '"Patrick Hand"', backgroundColor: 'white', color: 'black' }}
                         itemStyle={{ color: 'black' }}
                         formatter={(value: any) => parseFloat(value).toFixed(2)}
                     />
                     {types.map(t => (
-                        <Line 
+                        <Line
                             key={t}
-                            type="monotone" 
-                            dataKey={t} 
-                            stroke={colors[t]} 
+                            type="monotone"
+                            dataKey={t}
+                            stroke={colors[t]}
                             strokeWidth={4}
                             dot={false}
                             isAnimationActive={true}
@@ -298,7 +298,7 @@ export const NestedLoopVisualizer: React.FC = () => {
                 Array.from({ length: size }).map((_, j) => (
                     <motion.div
                         key={`${i}-${j}`}
-                        animate={{ 
+                        animate={{
                             scale: (i === outer && j === inner) ? 1.1 : 1,
                             backgroundColor: (i === outer && j === inner) ? '#fca5a5' : '#fff',
                             rotate: (i === outer && j === inner) ? 3 : 0

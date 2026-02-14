@@ -50,7 +50,8 @@ export const module4Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 401, question: "Linked list stores elements in?", options: ["Contiguous memory", "Non-contiguous memory", "Stack memory"], correctIndex: 1, explanation: "Nodes can be anywhere in the heap." },
-            { id: 402, question: "Each node contains?", options: ["Only Data", "Only Pointer", "Data + Pointer"], correctIndex: 2, explanation: "Value plus link to the next one." }
+            { id: 402, question: "Each node contains?", options: ["Only Data", "Only Pointer", "Data + Pointer"], correctIndex: 2, explanation: "Value plus link to the next one." },
+            { id: 4001, question: "Can we easily move a node in memory?", options: ["Yes, just update pointers", "No, it is fixed", "Only if we copy the array"], correctIndex: 0, explanation: "Since they are not contiguous, moving them is logical, not physical shifting." }
         ]
     },
     {
@@ -89,7 +90,8 @@ struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));`}
         ),
         mcqs: [
             { id: 403, question: "Pointer in node stores?", options: ["Value of next node", "Address of next node", "Null"], correctIndex: 1, explanation: "It points to the memory location of the next node." },
-            { id: 404, question: "Last node points to?", options: ["First node", "Null", "Random address"], correctIndex: 1, explanation: "Null indicates the end of the list." }
+            { id: 404, question: "Last node points to?", options: ["First node", "Null", "Random address"], correctIndex: 1, explanation: "Null indicates the end of the list." },
+            { id: 4002, question: "Size of a Node depends on?", options: ["Data Type + Pointer Size", "Just Data", "Fixed 4 bytes"], correctIndex: 0, explanation: "It must hold the data AND the address." }
         ]
     },
     {
@@ -113,7 +115,8 @@ struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));`}
         ),
         mcqs: [
             { id: 405, question: "Linked list uses contiguous memory?", options: ["Yes", "No"], correctIndex: 1, explanation: "That is the definition of Arrays, not Lists." },
-            { id: 406, question: "Advantage of non-contiguous memory?", options: ["Faster access", "Efficient memory utilization", "Less space"], correctIndex: 1, explanation: "Can use fragmented free space that arrays cannot." }
+            { id: 406, question: "Advantage of non-contiguous memory?", options: ["Faster access", "Efficient memory utilization for fragmented RAM", "Less space"], correctIndex: 1, explanation: "Can use fragmented free space that arrays cannot." },
+            { id: 4003, question: "Islands analogy refers to?", options: ["Nodes scattered in memory", "Arrays grouped together", "CPU cores"], correctIndex: 0, explanation: "Each node is an independent block connected by a bridge (pointer)." }
         ]
     },
     {
@@ -143,7 +146,8 @@ struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));`}
         ),
         mcqs: [
             { id: 407, question: "Which list has two pointers per node?", options: ["Singly", "Doubly", "Circular"], correctIndex: 1, explanation: "Prev and Next pointers." },
-            { id: 408, question: "Circular list last node points to?", options: ["Null", "Head", "Middle"], correctIndex: 1, explanation: "It forms a circle." }
+            { id: 408, question: "Circular list last node points to?", options: ["Null", "Head", "Middle"], correctIndex: 1, explanation: "It forms a circle." },
+            { id: 4004, question: "Which list uses less memory per node?", options: ["Singly Linked List", "Doubly Linked List"], correctIndex: 0, explanation: "Singly only stores 1 pointer, Doubly stores 2." }
         ]
     },
     {
@@ -175,7 +179,8 @@ printf("NULL");`}
         ),
         mcqs: [
             { id: 409, question: "Which operation is fastest in Singly Linked List?", options: ["Insert at End", "Insert at Beginning", "Search"], correctIndex: 1, explanation: "No traversal needed if you have Head pointer. O(1)." },
-            { id: 410, question: "Deletion at beginning takes?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 0, explanation: "Just move Head to Head->Next." }
+            { id: 410, question: "Deletion at beginning takes?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 0, explanation: "Just move Head to Head->Next." },
+            { id: 418, question: "Can you access the 5th element of a Linked List directly?", options: ["Yes", "No"], correctIndex: 1, explanation: "No, you must traverse from the head." }
         ]
     },
     {
@@ -218,7 +223,8 @@ printf("NULL");`}
         ),
         mcqs: [
             { id: 411, question: "Access time in linked list?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 1, explanation: "You cannot jump to index i." },
-            { id: 412, question: "Best operation in linked list vs array?", options: ["Random Access", "Dynamic Insertion", "Sorting"], correctIndex: 1, explanation: "Inserting without shifting elements." }
+            { id: 412, question: "Best operation in linked list vs array?", options: ["Random Access", "Dynamic Insertion", "Sorting"], correctIndex: 1, explanation: "Inserting without shifting elements." },
+            { id: 4005, question: "Why is search O(n)?", options: ["Must check nodes one by one", "Math calculation", "It is O(1)"], correctIndex: 0, explanation: "Sequential traversal is required." }
         ]
     },
     {
@@ -242,7 +248,9 @@ printf("NULL");`}
             </div>
         ),
         mcqs: [
-            { id: 413, question: "Linked list uses extra memory for?", options: ["Data", "Pointers", "Indexing"], correctIndex: 1, explanation: "Pointers allow the chaining mechanism." }
+            { id: 413, question: "Linked list uses extra memory for?", options: ["Data", "Pointers", "Indexing"], correctIndex: 1, explanation: "Pointers allow the chaining mechanism." },
+            { id: 4006, question: "On a 64-bit system, a pointer typically takes?", options: ["4 bytes", "8 bytes", "1 byte"], correctIndex: 1, explanation: "Memory addresses are 64-bit (8 bytes)." },
+            { id: 4007, question: "Is Linked List space complexity O(n)?", options: ["Yes", "No, O(1)", "O(n^2)"], correctIndex: 0, explanation: "Space grows linearly with valid nodes." }
         ]
     },
     {
@@ -277,7 +285,8 @@ printf("NULL");`}
         ),
         mcqs: [
             { id: 414, question: "Which supports dynamic size?", options: ["Array", "Linked List", "Both"], correctIndex: 1, explanation: "Arrays are fixed (mostly), Lists grow freely." },
-            { id: 415, question: "Which gives O(1) random access?", options: ["Linked List", "Array"], correctIndex: 1, explanation: "Math address calculation works only on Arrays." }
+            { id: 415, question: "Which gives O(1) random access?", options: ["Linked List", "Array"], correctIndex: 1, explanation: "Math address calculation works only on Arrays." },
+            { id: 4008, question: "Which has better Cache Locality?", options: ["Array", "Linked List"], correctIndex: 0, explanation: "Arrays are contiguous blocks, friendly to CPU cache." }
         ]
     },
     {
@@ -306,7 +315,8 @@ printf("NULL");`}
         ),
         mcqs: [
             { id: 416, question: "Main advantage of linked list?", options: ["Fast Search", "Dynamic Size", "Cache Friendly"], correctIndex: 1, explanation: "No need to pre-allocate size." },
-            { id: 417, question: "Why linked list is slower than array for access?", options: ["Pointers are slow", "Sequential Traversal needed", "Data is compressed"], correctIndex: 1, explanation: "Must walk the chain." }
+            { id: 417, question: "Why linked list is slower than array for access?", options: ["Pointers are slow", "Sequential Traversal needed", "Data is compressed"], correctIndex: 1, explanation: "Must walk the chain." },
+            { id: 4009, question: "When to use Linked List?", options: ["Frequent Insert/Delete at head", "Frequent Random Access", "Fixed size data"], correctIndex: 0, explanation: "It excels at dynamic changes." }
         ]
     },
     {

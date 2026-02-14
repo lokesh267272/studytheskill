@@ -63,7 +63,8 @@ export const module9Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 903, question: "Linear search checks elements?", options: ["Randomly", "Sequentially", "By halving"], correctIndex: 1, explanation: "One after another from index 0." },
-            { id: 904, question: "Does linear search work on unsorted data?", options: ["Yes", "No"], correctIndex: 0, explanation: "Order doesn't matter, we check everything." }
+            { id: 904, question: "Does linear search work on unsorted data?", options: ["Yes", "No"], correctIndex: 0, explanation: "Order doesn't matter, we check everything." },
+            { id: 919, question: "Max comparisons in Linear Search?", options: ["1", "n/2", "n"], correctIndex: 2, explanation: "Worst case scans all." }
         ]
     },
     {
@@ -131,7 +132,8 @@ export const module9Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 907, question: "Prerequisite for Binary Search?", options: ["Array must be empty", "Array must be sorted", "Array must be large"], correctIndex: 1, explanation: "Logic relies on order (< or >)." },
-            { id: 908, question: "Binary search works on unsorted array?", options: ["Yes", "No"], correctIndex: 1, explanation: "No, it will fail to find elements correctly." }
+            { id: 908, question: "Binary search works on unsorted array?", options: ["Yes", "No"], correctIndex: 1, explanation: "No, it will fail to find elements correctly." },
+            { id: 920, question: "Binary Search uses which strategy?", options: ["Greedy", "Divide and Conquer", "Dynamic Programming"], correctIndex: 1, explanation: "Halves the problem space." }
         ]
     },
     {

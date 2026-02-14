@@ -29,6 +29,15 @@ export interface Topic {
     text: string;
     icon?: string;
   }[];
+  mcqs?: MCQ[];
+}
+
+export interface MCQ {
+  id: number;
+  question: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
 }
 
 export interface Module {

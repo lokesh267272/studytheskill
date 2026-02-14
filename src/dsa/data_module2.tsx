@@ -39,7 +39,8 @@ export const module2Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 201, question: "Why are arrays called 'contiguous'?", options: ["They contain different types", "They are stored in side-by-side memory blocks", "They are random"], correctIndex: 1, explanation: "Contiguous means 'touching' or 'side-by-side'. No gaps!" },
-            { id: 202, question: "Can you change the size of a standard array easily?", options: ["Yes, anytime", "No, it's fixed size", "Only on Tuesdays"], correctIndex: 1, explanation: "Standard arrays are fixed at creation. You'd need a new, bigger array to 'resize'." }
+            { id: 202, question: "Can you change the size of a standard array easily?", options: ["Yes, anytime", "No, it's fixed size", "Only on Tuesdays"], correctIndex: 1, explanation: "Standard arrays are fixed at creation. You'd need a new, bigger array to 'resize'." },
+            { id: 2021, question: "What type of data can an array hold?", options: ["Any mix of types", "Only one specific type", "Only Numbers"], correctIndex: 1, explanation: "Arrays are homogenous (same type)." }
         ]
     },
     {
@@ -74,7 +75,8 @@ export const module2Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 203, question: "If you want the 3rd element, which index do you use?", options: ["Index 3", "Index 2", "Index 4"], correctIndex: 1, explanation: "1st is 0, 2nd is 1, 3rd is 2." },
-            { id: 204, question: "Why 0-based?", options: ["It's just a convention", "It represents an offset from the start", "Computers like 0"], correctIndex: 1, explanation: "Index 0 means '0 steps away from the beginning'." }
+            { id: 204, question: "Why 0-based?", options: ["It's just a convention", "It represents an offset from the start", "Computers like 0"], correctIndex: 1, explanation: "Index 0 means '0 steps away from the beginning'." },
+            { id: 2022, question: "Index of the first element is?", options: ["1", "-1", "0"], correctIndex: 2, explanation: "Zero-based indexing." }
         ]
     },
     {
@@ -101,7 +103,8 @@ export const module2Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 205, question: "Accessing array element at index 1000 takes?", options: ["O(n) time", "O(1) time", "O(1000) time"], correctIndex: 1, explanation: "It takes the exact same time as accessing index 0. It's just simple addition." },
-            { id: 206, question: "What is required for this O(1) magic?", options: ["Contiguous Memory", "Linked Nodes", "Sorted Data"], correctIndex: 0, explanation: "If data wasn't side-by-side, we couldn't predict the address." }
+            { id: 206, question: "What is required for this O(1) magic?", options: ["Contiguous Memory", "Linked Nodes", "Sorted Data"], correctIndex: 0, explanation: "If data wasn't side-by-side, we couldn't predict the address." },
+            { id: 101, question: "What is the time complexity of accessing an array element by index?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 0, explanation: "Direct access is instant." }
         ]
     },
     {
@@ -129,7 +132,9 @@ export const module2Data: ContentSection[] = [
             </div>
         ),
         mcqs: [
-            { id: 207, question: "A spreadsheet is an example of?", options: ["1D Array", "2D Array", "Linked List"], correctIndex: 1, explanation: "Rows and Columns!" }
+            { id: 207, question: "A spreadsheet is an example of?", options: ["1D Array", "2D Array", "Linked List"], correctIndex: 1, explanation: "Rows and Columns!" },
+            { id: 204, question: "A 2D array is essentially?", options: ["Array of pointers", "Array of Arrays", "Linked List"], correctIndex: 1, explanation: "Rows of columns." },
+            { id: 2023, question: "How do you access an element in 2D array?", options: ["arr[x]", "arr[row][col]", "arr.get(x)"], correctIndex: 1, explanation: "Need 2 indices: Row and Column." }
         ]
     },
     {
@@ -170,7 +175,9 @@ arr[pos] = x; // Finally sit down`}
             </div>
         ),
         mcqs: [
-            { id: 208, question: "Why is insertion slow in arrays?", options: ["The computer is lazy", "You have to shift existing elements", "RAM is slow"], correctIndex: 1, explanation: "You can't overwrite data; you have to make space." }
+            { id: 208, question: "Why is insertion slow in arrays?", options: ["The computer is lazy", "You have to shift existing elements", "RAM is slow"], correctIndex: 1, explanation: "You can't overwrite data; you have to make space." },
+            { id: 203, question: "If you delete index 0, what happens to index 1?", options: ["Stays same", "Moves to index 0", "Becomes null"], correctIndex: 1, explanation: "Elements shift left to fill gap." },
+            { id: 2024, question: "Best place to insert in an array?", options: ["Beginning", "Middle", "End"], correctIndex: 2, explanation: "No shifting required at the end." }
         ]
     },
     {
@@ -219,7 +226,8 @@ arr[pos] = x; // Finally sit down`}
         ),
         mcqs: [
             { id: 209, question: "What is an Array BEST at?", options: ["Inserting data", "Random Access (Reading)", "Deleting data"], correctIndex: 1, explanation: "Instant access to any element is its superpower." },
-            { id: 210, question: "What is an Array WORST at?", options: ["Reading", "Modifying size / Inserting in middle", "Storing numbers"], correctIndex: 1, explanation: "Changing the structure (size/order) forces heavy shifting." }
+            { id: 210, question: "What is an Array WORST at?", options: ["Reading", "Modifying size / Inserting in middle", "Storing numbers"], correctIndex: 1, explanation: "Changing the structure (size/order) forces heavy shifting." },
+            { id: 2025, question: "Searching a value in unsorted array takes?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 1, explanation: "Must check every element." }
         ]
     },
     {
@@ -243,7 +251,9 @@ arr[pos] = x; // Finally sit down`}
             </div>
         ),
         mcqs: [
-            { id: 211, question: "If you declare arr[1000], how much space is reserved?", options: ["Space for 1 element", "Space for 1000 elements", "Depends on how many you use"], correctIndex: 1, explanation: "Arrays reserve the full block immediately." }
+            { id: 211, question: "If you declare arr[1000], how much space is reserved?", options: ["Space for 1 element", "Space for 1000 elements", "Depends on how many you use"], correctIndex: 1, explanation: "Arrays reserve the full block immediately." },
+            { id: 2026, question: "Array space complexity is?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "Linear space relative to size." },
+            { id: 2027, question: "Do empty slots in allocated array consume memory?", options: ["Yes", "No"], correctIndex: 0, explanation: "Memory is reserved regardless of usage." }
         ]
     },
     {
@@ -278,7 +288,9 @@ arr[pos] = x; // Finally sit down`}
             </div>
         ),
         mcqs: [
-            { id: 212, question: "How does a Dynamic Array grow?", options: ["It stretches existing memory", "It creates a new bigger array and copies everything", "It links a new part"], correctIndex: 1, explanation: "It performs a 'Resize' operation: Create New -> Copy Old -> Delete Old." }
+            { id: 212, question: "How does a Dynamic Array grow?", options: ["It stretches existing memory", "It creates a new bigger array and copies everything", "It links a new part"], correctIndex: 1, explanation: "It performs a 'Resize' operation: Create New -> Copy Old -> Delete Old." },
+            { id: 2028, question: "Example of Dynamic Array?", options: ["int arr[10]", "ArrayList / Python List", "Struct"], correctIndex: 1, explanation: "They handle resizing automatically." },
+            { id: 2029, question: "Disadvantage of Dynamic Array?", options: ["Occasional slow resize", "Slow access", "Complex syntax"], correctIndex: 0, explanation: "Resizing takes O(n) time occasionally." }
         ]
     },
     {
@@ -305,7 +317,11 @@ arr[pos] = x; // Finally sit down`}
                 </div>
             </div>
         ),
-        mcqs: []
+        mcqs: [
+            { id: 201, question: "Which operation is fastest in an array?", options: ["Search", "Insertion", "Access"], correctIndex: 2, explanation: "Access is O(1)." },
+            { id: 202, question: "Arrays are best for?", options: ["Frequent Insertions", "Random Access", "Dynamic Size"], correctIndex: 1, explanation: "O(1) access is the main strength." },
+            { id: 2030, question: "If you need frequent insertions, use?", options: ["Array", "Linked List", "Stack"], correctIndex: 1, explanation: "Linked Lists handle insertion better." }
+        ]
     },
     {
         id: '210',

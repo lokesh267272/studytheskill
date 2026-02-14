@@ -21,13 +21,17 @@ export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) =
                     >
                         <Menu size={24} />
                     </button>
-                    <div className="flex items-center gap-2 cursor-pointer">
+                    <div className="flex items-center gap-2 cursor-pointer group">
                         {/* Logo Placeholder */}
-                        <div className="bg-[#04AA6D] p-1.5 rounded-sm">
-                            <Code size={24} className="text-white" />
+                        <div className="bg-gradient-to-br from-[#04AA6D] to-[#028A58] p-2 rounded-lg shadow-md group-hover:scale-110 transition-transform duration-300">
+                            <Code size={28} className="text-white" />
                         </div>
-                        <span className="font-bold text-lg tracking-wide hidden sm:block">StudyTheSkill</span>
-                        <span className="font-bold text-lg tracking-wide sm:hidden">STS</span>
+                        <span className="font-extrabold text-2xl tracking-wide hidden sm:block bg-gradient-to-r from-[#04AA6D] via-[#2ecc71] to-[#04AA6D] bg-clip-text text-transparent group-hover:from-[#00cba9] group-hover:to-[#5ce69a] transition-all duration-300 font-sans">
+                            Study The Skill
+                        </span>
+                        <span className="font-extrabold text-2xl tracking-wide sm:hidden bg-gradient-to-r from-[#04AA6D] to-[#2ecc71] bg-clip-text text-transparent font-sans">
+                            STS
+                        </span>
                     </div>
 
                     <nav className="hidden md:flex gap-1 ml-4 h-full items-center">

@@ -25,23 +25,42 @@ export const module1Data: ContentSection[] = [
         content: (
             <div className="space-y-6">
                 <p className="text-xl">
-                    Imagine you're throwing a huge pizza party. You have two friends who want to be the chef:
+                    Let's play a game called <strong>"Find Zoe"</strong>.
+                    <br />
+                    I hand you a phone book with 1,000,000 names. You need to find "Zoe".
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
-                        <h4 className="font-bold text-blue-800">Chef A</h4>
-                        <p>Takes 10 minutes to bake 1 pizza. <br />Checking 100 pizzas? <br /><strong>That's 1000 minutes!</strong></p>
+                    <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200 shadow-sm">
+                        <h4 className="font-bold text-blue-800 text-lg mb-2">Method A: The Scroller (Novice)</h4>
+                        <p className="text-sm">
+                            You start at the very first page and read every single name.
+                            <br />
+                            <em>"Aaron... Abby... Adam..."</em>
+                            <br />
+                            <br />
+                            <strong>The Problem:</strong> Zoe starts with 'Z'. You have to read 999,999 names before you find her. If the book doubles in size, your work doubles.
+                            <br />
+                            <span className="font-mono text-red-600 font-bold">This is O(n).</span>
+                        </p>
                     </div>
-                    <div className="bg-green-50 p-4 rounded-lg border-2 border-green-200">
-                        <h4 className="font-bold text-green-800">Chef B</h4>
-                        <p>Takes 1 hour to heat the oven, but then bakes <strong>all pizzas instantly</strong>.</p>
+                    <div className="bg-green-50 p-4 rounded-lg border-2 border-green-200 shadow-sm">
+                        <h4 className="font-bold text-green-800 text-lg mb-2">Method B: The Hacker (Pro)</h4>
+                        <p className="text-sm">
+                            You don't read names. You grab the side tab labeled <strong>'Z'</strong> and flip exactly to the end.
+                            <br />
+                            <br />
+                            <strong>The Power:</strong> It doesn't matter if the book has 10 names or 10 billion names. You flip to 'Z' in <strong>one motion</strong>.
+                            <br />
+                            <span className="font-mono text-green-600 font-bold">This is O(1).</span>
+                        </p>
                     </div>
                 </div>
                 <SketchCard title="The Race">
                     <SpeedComparison />
                     <p className="mt-4 text-center italic">
-                        For 1 pizza, Chef A wins. But for 1,000 pizzas? Chef B destroys him. <br />
-                        <Highlight>That is Scale.</Highlight>
+                        For 5 names, nobody cares. But for <strong>1 Billion Users</strong> (like Facebook)? <br />
+                        Method A takes 30 years. Method B takes 0.1 seconds. <br />
+                        <Highlight>That is why we study Complexity.</Highlight>
                     </p>
                 </SketchCard>
                 <div className="space-y-2">
@@ -56,7 +75,8 @@ export const module1Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 1, question: "Why don't we measure algorithms in percentages or seconds?", options: ["Because hardware speeds vary", "Because seconds act differently in code", "Because it's impossible"], correctIndex: 0, explanation: "Exactly! A fast code on a slow computer might look slow. We need a hardware-independent metric." },
-            { id: 2, question: "What is the 'Input Size' usually called?", options: ["x", "n", "i"], correctIndex: 1, explanation: "We use 'n' to represent the number of items we are processing." }
+            { id: 2, question: "What is the 'Input Size' usually called?", options: ["x", "n", "i"], correctIndex: 1, explanation: "We use 'n' to represent the number of items we are processing." },
+            { id: 1001, question: "If 'The Scroller' takes 1 sec per contact, how long for 100 contacts?", options: ["1 sec", "100 secs", "Constant time"], correctIndex: 1, explanation: "Linear scaling: 100 * 1 = 100 seconds." }
         ]
     },
     {
@@ -104,7 +124,8 @@ function scanGroceries(cart) {
         ),
         mcqs: [
             { id: 3, question: "Time complexity counts...", options: ["Seconds passed", "Operations performed", "Lines of code"], correctIndex: 1, explanation: "It counts the fundamental steps/operations relative to input size." },
-            { id: 4, question: "If a loop runs from 1 to n, what is the complexity?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "One step for each of the n items." }
+            { id: 4, question: "If a loop runs from 1 to n, what is the complexity?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "One step for each of the n items." },
+            { id: 1002, question: "What is 'Effort' in algorithms?", options: ["How hard the coder works", "Number of operations", "Electricity used"], correctIndex: 1, explanation: "We measure effort by counting steps." }
         ]
     },
     {
@@ -143,7 +164,8 @@ function scanGroceries(cart) {
         ),
         mcqs: [
             { id: 5, question: "What is Auxiliary Space?", options: ["The input array size", "Extra temporary memory used", "Hard drive space"], correctIndex: 1, explanation: "It's the temporary workspace your algorithm needs to run." },
-            { id: 6, question: "If you create a new array of size 'n' inside your function, what's the space complexity?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "You allocated memory proportional to the input size." }
+            { id: 6, question: "If you create a new array of size 'n' inside your function, what's the space complexity?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "You allocated memory proportional to the input size." },
+            { id: 1003, question: "Does Input Space count towards Auxiliary Space?", options: ["Yes", "No"], correctIndex: 1, explanation: "Auxiliary is only the EXTRA space you use." }
         ]
     },
     {
@@ -175,7 +197,9 @@ function scanGroceries(cart) {
             </div>
         ),
         mcqs: [
-            { id: 7, question: "What does 'n' represent?", options: ["The variable name", "The input size", "The number of loops"], correctIndex: 1, explanation: "n is the magnitude of data we are dealing with." }
+            { id: 7, question: "What does 'n' represent?", options: ["The variable name", "The input size", "The number of loops"], correctIndex: 1, explanation: "n is the magnitude of data we are dealing with." },
+            { id: 1004, question: "For a dictionary search, 'n' is?", options: ["Number of pages", "Number of words", "Time taken"], correctIndex: 1, explanation: "The number of items in the dataset." },
+            { id: 1005, question: "We care about complexity when n is?", options: ["Small", "Zero", "Huge"], correctIndex: 2, explanation: "Scale matters most." }
         ]
     },
     {
@@ -209,7 +233,8 @@ function scanGroceries(cart) {
         ),
         mcqs: [
             { id: 8, question: "Why do programmers care most about Worst Case (Big O)?", options: ["It's unlikely to happen", "It guarantees performance won't get worse than this", "It's the easiest to calculate"], correctIndex: 1, explanation: "If we plan for the worst, our users are never disappointed." },
-            { id: 9, question: "Finding an item at the very first index is?", options: ["Worst Case", "Best Case", "Average Case"], correctIndex: 1, explanation: "That's the luckiest scenario!" }
+            { id: 9, question: "Finding an item at the very first index is?", options: ["Worst Case", "Best Case", "Average Case"], correctIndex: 1, explanation: "That's the luckiest scenario!" },
+            { id: 102, question: "Which notation represents the worst-case scenario?", options: ["Big-Ω", "Big-θ", "Big-O"], correctIndex: 2, explanation: "Big-O is the upper bound." }
         ]
     },
     {
@@ -233,7 +258,11 @@ function scanGroceries(cart) {
                 </div>
             </div>
         ),
-        mcqs: []
+        mcqs: [
+            { id: 103, question: "A loop runs n/2 times. Complexity?", options: ["O(n/2)", "O(n)", "O(1)"], correctIndex: 1, explanation: "Constants (1/2) are ignored." },
+            { id: 1006, question: "In O(2n + 5), which part do we keep?", options: ["2n", "5", "n"], correctIndex: 2, explanation: "Drop constants and coefficients." },
+            { id: 1007, question: "Why do we drop constants?", options: ["They are too hard to calculate", "They don't affect growth curve shape", "Computers ignore them"], correctIndex: 1, explanation: "At large scales, the curve shape is defined by n." }
+        ]
     },
     {
         id: '7',
@@ -266,7 +295,8 @@ function scanGroceries(cart) {
         ),
         mcqs: [
             { id: 10, question: "Big-O gives us the ____ bound?", options: ["Lower", "Upper", "Middle"], correctIndex: 1, explanation: "It sets the limit on how much time/space can be used." },
-            { id: 11, question: "O(2n + 100) simplifies to?", options: ["O(2n)", "O(n)", "O(100)"], correctIndex: 1, explanation: "Drop constants and lower terms. Only 'n' matters." }
+            { id: 11, question: "O(2n + 100) simplifies to?", options: ["O(2n)", "O(n)", "O(100)"], correctIndex: 1, explanation: "Drop constants and lower terms. Only 'n' matters." },
+            { id: 1008, question: "Which algorithm is safer for production?", options: ["O(n)", "O(n^2)"], correctIndex: 0, explanation: "Linear growth is much more manageable than quadratic." }
         ]
     },
     {
@@ -289,7 +319,9 @@ function scanGroceries(cart) {
             </div>
         ),
         mcqs: [
-            { id: 12, question: "We use Omega for...", options: ["Worst Case", "Best Case", "Average Case"], correctIndex: 1, explanation: "It's the lower bound measurement." }
+            { id: 12, question: "We use Omega for...", options: ["Worst Case", "Best Case", "Average Case"], correctIndex: 1, explanation: "It's the lower bound measurement." },
+            { id: 1009, question: "Can Big-Omega predict worst performance?", options: ["Yes", "No"], correctIndex: 1, explanation: "No, it only tells you the best case (lucky) scenario." },
+            { id: 1010, question: "Is Best Case useful for guarantees?", options: ["Yes", "No"], correctIndex: 1, explanation: "We can't rely on luck." }
         ]
     },
     {
@@ -313,7 +345,9 @@ function scanGroceries(cart) {
             </div>
         ),
         mcqs: [
-            { id: 13, question: "Theta means...", options: ["The value is exactly known", "The bounds are tight around the function", "The code is slow"], correctIndex: 1, explanation: "It sandwiches the growth rate from both top and bottom." }
+            { id: 13, question: "Theta means...", options: ["The value is exactly known", "The bounds are tight around the function", "The code is slow"], correctIndex: 1, explanation: "It sandwiches the growth rate from both top and bottom." },
+            { id: 1011, question: "When do we use Theta?", options: ["When Best and Worst case differ", "When Best and Worst case are same order", "Never"], correctIndex: 1, explanation: "It represents a precise bound." },
+            { id: 1012, question: "Theta is like a...", options: ["Sandwich", "Ladder", "Bucket"], correctIndex: 0, explanation: "Tight bounds above and below." }
         ]
     },
     {
@@ -369,7 +403,8 @@ function scanGroceries(cart) {
         ),
         mcqs: [
             { id: 14, question: "Which is the fastest complexity?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 0, explanation: "O(1) is constant means instant." },
-            { id: 15, question: "Which complexity should you generally avoid for large data?", options: ["O(n log n)", "O(n)", "O(n^2)"], correctIndex: 2, explanation: "n-squared grows very fast. If n=10,000, n^2 is 100,000,000!" }
+            { id: 15, question: "Which complexity should you generally avoid for large data?", options: ["O(n log n)", "O(n)", "O(n^2)"], correctIndex: 2, explanation: "n-squared grows very fast. If n=10,000, n^2 is 100,000,000!" },
+            { id: 1013, question: "Which is faster than O(n) but slower than O(1)?", options: ["O(n^2)", "O(log n)", "O(2n)"], correctIndex: 1, explanation: "Logarithmic time is very efficient." }
         ]
     },
     {
@@ -403,7 +438,9 @@ function scanGroceries(cart) {
             </div>
         ),
         mcqs: [
-            { id: 16, question: "What happens in O(log n)?", options: ["The work doubles", "The work implies a loop", "The problem size is cut in half repeatedly"], correctIndex: 2, explanation: "Classic 'Divide and Conquer' approach." }
+            { id: 16, question: "What happens in O(log n)?", options: ["The work doubles", "The work implies a loop", "The problem size is cut in half repeatedly"], correctIndex: 2, explanation: "Classic 'Divide and Conquer' approach." },
+            { id: 104, question: "Binary Search is efficient because it is:", options: ["O(n)", "O(log n)", "O(n^2)"], correctIndex: 1, explanation: "It halves the search space every step." },
+            { id: 1014, question: "The base of the log in CS is usually?", options: ["10", "2", "e"], correctIndex: 1, explanation: "Because of binary (0s and 1s) and halving." }
         ]
     },
     {
@@ -451,7 +488,9 @@ for (let i = 1; i <= n; i++) {       // Runs n times
             </div>
         ),
         mcqs: [
-            { id: 17, question: "How do you identify O(n²) usually?", options: ["A single loop", "Two loops", "Nested loops"], correctIndex: 2, explanation: "A loop inside another loop is the classic sign." }
+            { id: 17, question: "How do you identify O(n²) usually?", options: ["A single loop", "Two loops", "Nested loops"], correctIndex: 2, explanation: "A loop inside another loop is the classic sign." },
+            { id: 1015, question: "If 'i' runs n times and 'j' runs n times inside 'i', total runs?", options: ["n + n", "n", "n * n"], correctIndex: 2, explanation: "Multiplication rule for nesting." },
+            { id: 1016, question: "Does O(n^2) scale well?", options: ["Yes, perfectly", "No, it gets slow very fast", "It is instant"], correctIndex: 1, explanation: "Quadratic growth is bad for large n." }
         ]
     },
     {
@@ -472,7 +511,9 @@ for (let i = 1; i <= n; i++) {       // Runs n times
             </div>
         ),
         mcqs: [
-            { id: 18, question: "Does recursion use extra space?", options: ["No, it's free", "Yes, O(n) stack space usually", "Only if variables are used"], correctIndex: 1, explanation: "The computer has to remember where to return to for every single call." }
+            { id: 18, question: "Does recursion use extra space?", options: ["No, it's free", "Yes, O(n) stack space usually", "Only if variables are used"], correctIndex: 1, explanation: "The computer has to remember where to return to for every single call." },
+            { id: 1017, question: "What is a Stack Overflow?", options: ["Too much recursion memory", "Internet disconnect", "Disk full"], correctIndex: 0, explanation: "Running out of stack memory due to deep recursion." },
+            { id: 1018, question: "Which data structure tracks recursion?", options: ["Queue", "Stack", "Map"], correctIndex: 1, explanation: "The Call Stack." }
         ]
     },
     {

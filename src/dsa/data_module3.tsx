@@ -45,7 +45,8 @@ export const module3Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 301, question: "String is a collection of?", options: ["Integers", "Characters", "Booleans"], correctIndex: 1, explanation: "Strings are made up of chars." },
-            { id: 302, question: "String is stored as which data structure?", options: ["Stack", "Queue", "Array"], correctIndex: 2, explanation: "It's basically an array of characters." }
+            { id: 302, question: "String is stored as which data structure?", options: ["Stack", "Queue", "Array"], correctIndex: 2, explanation: "It's basically an array of characters." },
+            { id: 3001, question: "What allows strings to form words?", options: ["Sequence", "Randomness", "Colors"], correctIndex: 0, explanation: "Order of characters matters." }
         ]
     },
     {
@@ -76,7 +77,8 @@ export const module3Data: ContentSection[] = [
         ),
         mcqs: [
             { id: 303, question: "Strings use contiguous memory?", options: ["Yes", "No"], correctIndex: 0, explanation: "Characters are stored next to each other." },
-            { id: 304, question: "Indexing in strings starts from?", options: ["1", "0", "-1"], correctIndex: 1, explanation: "Zero-based indexing applies here too." }
+            { id: 304, question: "Indexing in strings starts from?", options: ["1", "0", "-1"], correctIndex: 1, explanation: "Zero-based indexing applies here too." },
+            { id: 3002, question: "The address of next char is?", options: ["Random", "Previous + 1 byte", "Previous + 4 bytes"], correctIndex: 1, explanation: "Chars usually take 1 byte." }
         ]
     },
     {
@@ -111,7 +113,8 @@ char str[] = "HELLO";
         ),
         mcqs: [
             { id: 305, question: "Null character is used to?", options: ["Start string", "Terminate string", "Add space"], correctIndex: 1, explanation: "It marks the end of the data." },
-            { id: 306, question: "String termination symbol is?", options: ["\\n", "\\t", "\\0"], correctIndex: 2, explanation: "Null character." }
+            { id: 306, question: "String termination symbol is?", options: ["\\n", "\\t", "\\0"], correctIndex: 2, explanation: "Null character." },
+            { id: 3003, question: "What happens if \\0 is missing?", options: ["Prints garbage", "Works fine", "Prints nothing"], correctIndex: 0, explanation: "Read past the end of string." }
         ]
     },
     {
@@ -141,7 +144,8 @@ char str[] = "HELLO";
         ),
         mcqs: [
             { id: 307, question: "Length of \"HELLO\" is?", options: ["5", "6", "4"], correctIndex: 0, explanation: "H-E-L-L-O = 5 characters." },
-            { id: 308, question: "Null character is included in length?", options: ["Yes", "No"], correctIndex: 1, explanation: "Length counts actual content only." }
+            { id: 308, question: "Null character is included in length?", options: ["Yes", "No"], correctIndex: 1, explanation: "Length counts actual content only." },
+            { id: 3004, question: "Size in memory of \"HI\"?", options: ["2", "3", "1"], correctIndex: 1, explanation: "H, I, and \\0." }
         ]
     },
     {
@@ -168,7 +172,8 @@ char str[] = "HELLO";
         ),
         mcqs: [
             { id: 309, question: "Which operation compares two strings?", options: ["strcat", "strcmp", "strcpy"], correctIndex: 1, explanation: "String Compare." },
-            { id: 310, question: "Concatenation means?", options: ["Deleting", "Joining", "Reversing"], correctIndex: 1, explanation: "Appending one string to another." }
+            { id: 310, question: "Concatenation means?", options: ["Deleting", "Joining", "Reversing"], correctIndex: 1, explanation: "Appending one string to another." },
+            { id: 3005, question: "Copying a string requires?", options: ["Just changing variable", "Copying loop/function", "Nothing"], correctIndex: 1, explanation: "Must copy character by character." }
         ]
     },
     {
@@ -215,7 +220,8 @@ char str[] = "HELLO";
         ),
         mcqs: [
             { id: 311, question: "Time complexity of strlen()?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "It loops through the string once." },
-            { id: 312, question: "Worst-case string comparison?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 1, explanation: "If strings are identical, it checks all n characters." }
+            { id: 312, question: "Worst-case string comparison?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 1, explanation: "If strings are identical, it checks all n characters." },
+            { id: 3006, question: "Most string operations are?", options: ["O(1)", "O(n)", "O(log n)"], correctIndex: 1, explanation: "Usually involve traversing the string." }
         ]
     },
     {
@@ -240,7 +246,9 @@ char str[] = "HELLO";
             </div>
         ),
         mcqs: [
-            { id: 313, question: "Space complexity of string of length n?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "Proportional to number of characters." }
+            { id: 313, question: "Space complexity of string of length n?", options: ["O(1)", "O(n)", "O(n^2)"], correctIndex: 1, explanation: "Proportional to number of characters." },
+            { id: 321, question: "String \"AB\" occupies how many bytes?", options: ["2", "3", "4"], correctIndex: 1, explanation: "A, B, and \\0." },
+            { id: 3007, question: "Does string space grow with content?", options: ["Yes", "No"], correctIndex: 0, explanation: "More chars = More memory." }
         ]
     },
     {
@@ -271,7 +279,8 @@ char str[] = "HELLO";
         ),
         mcqs: [
             { id: 314, question: "Java strings are?", options: ["Mutable", "Immutable", "Both"], correctIndex: 1, explanation: "Once created, they cannot be changed." },
-            { id: 315, question: "Immutable means?", options: ["Can be changed", "Cannot be changed", "Deleted instantly"], correctIndex: 1, explanation: "Modification creates a new instance." }
+            { id: 315, question: "Immutable means?", options: ["Can be changed", "Cannot be changed", "Deleted instantly"], correctIndex: 1, explanation: "Modification creates a new instance." },
+            { id: 322, question: "If a string is Immutable, modifying it:", options: ["Changes it in place", "Creates a new copy", "Crashes program"], correctIndex: 1, explanation: "Original memory is untouched." }
         ]
     },
     {
@@ -296,7 +305,8 @@ char str[] = "HELLO";
         ),
         mcqs: [
             { id: 316, question: "String input usually stops at?", options: ["End of line", "Whitespace", "Null"], correctIndex: 1, explanation: "Spaces break the input token." },
-            { id: 317, question: "Output stops at which character?", options: ["\\n", "\\0", "Space"], correctIndex: 1, explanation: "Null terminator marks the end." }
+            { id: 317, question: "Output stops at which character?", options: ["\\n", "\\0", "Space"], correctIndex: 1, explanation: "Null terminator marks the end." },
+            { id: 3008, question: "Can you print a string without \\0?", options: ["Yes, safely", "Unsafe", "Impossible"], correctIndex: 1, explanation: "May print memory garbage." }
         ]
     },
     {
@@ -335,7 +345,8 @@ char str[] = "HELLO";
         ),
         mcqs: [
             { id: 318, question: "Palindrome means?", options: ["Reads same forwards/backwards", "Contains all vowels", "Is empty"], correctIndex: 0, explanation: "e.g., RACECAR." },
-            { id: 319, question: "Reverse string output of 'ABC'?", options: ["ABC", "CBA", "BCA"], correctIndex: 1, explanation: "Order is flipped." }
+            { id: 319, question: "Reverse string output of 'ABC'?", options: ["ABC", "CBA", "BCA"], correctIndex: 1, explanation: "Order is flipped." },
+            { id: 3009, question: "Anagrams have?", options: ["Same letters, different order", "Different letters", "Same meaning"], correctIndex: 0, explanation: "e.g., LISTEN -> SILENT." }
         ]
     },
     {
@@ -367,7 +378,9 @@ char str[] = "HELLO";
             </div>
         ),
         mcqs: [
-            { id: 320, question: "Which has null character?", options: ["Int Array", "String", "Float Array"], correctIndex: 1, explanation: "Specific to strings." }
+            { id: 320, question: "Which has null character?", options: ["Int Array", "String", "Float Array"], correctIndex: 1, explanation: "Specific to strings." },
+            { id: 3010, question: "Why do we prefer Strings over Int Arrays for text?", options: ["Helper functions", "Less memory", "Faster"], correctIndex: 0, explanation: "String libraries provide useful tools." },
+            { id: 3011, question: "Are strings just arrays?", options: ["Yes, fundamentally", "No, completely different"], correctIndex: 0, explanation: "Yes, under the hood." }
         ]
     },
     {

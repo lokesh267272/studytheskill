@@ -21,6 +21,15 @@ export const MainLayout = () => {
         <>DBMS <br /> MASTER</>
     );
 
+    const mainRef = React.useRef<HTMLElement>(null);
+
+    // Scroll back to top when navigating to a new topic
+    React.useEffect(() => {
+        if (mainRef.current) {
+            mainRef.current.scrollTo(0, 0);
+        }
+    }, [location.pathname]);
+
     return (
         <div className="flex flex-col h-screen bg-[#f8f9fa] text-slate-800 font-sans overflow-hidden">
             <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -34,7 +43,7 @@ export const MainLayout = () => {
                     basePath={basePath}
                 />
 
-                <main className="flex-1 overflow-y-auto w-full relative">
+                <main ref={mainRef} className="flex-1 overflow-y-auto w-full relative">
                     {/* Paper texture overlay for the content area */}
                     <div className="min-h-full pb-20 md:p-0">
                         <Outlet />
