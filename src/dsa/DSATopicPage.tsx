@@ -1,11 +1,13 @@
 import React from 'react';
-import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { useParams, Navigate, useNavigate, useOutletContext } from 'react-router-dom';
 import { contentData } from './data';
 import { SectionType } from './types';
+import { LayoutContextType } from '../types';
 import { QuizComponent } from './components/Quiz.tsx';
 import { motion } from 'framer-motion';
 import { SketchyButton } from '../components/Controls/SketchyComponents';
 import { useSEO } from '../hooks/useSEO';
+import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 
 // Helper to slugify text (must match dsaMeta.ts logic)
 const slugify = (text: string) => {
@@ -15,6 +17,7 @@ const slugify = (text: string) => {
 export const DSATopicPage = () => {
     const { topicSlug } = useParams();
     const navigate = useNavigate();
+    const { isSidebarCollapsed, setIsSidebarCollapsed } = useOutletContext<LayoutContextType>();
 
     // Find section index by slug
     const currentSectionIndex = contentData.findIndex(section =>
@@ -70,12 +73,21 @@ export const DSATopicPage = () => {
         >
             {/* Top Navigation */}
             <div className="flex justify-between items-center mb-6">
-                <div>
-                    {prevSection ? (
+                <div className="flex items-center gap-3">
+                    <SketchyButton
+                        onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                        className={`text-sm px-3 py-2 flex items-center gap-2 ${isSidebarCollapsed ? '!bg-blue-100' : ''}`}
+                        title={isSidebarCollapsed ? "Show Sidebar" : "Focus Mode"}
+                    >
+                        {isSidebarCollapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
+                        <span className="hidden sm:inline">{isSidebarCollapsed ? "Show Menu" : "Focus Mode"}</span>
+                    </SketchyButton>
+
+                    {prevSection && (
                         <SketchyButton onClick={() => navigateToSection(prevSection)} className="text-sm px-4 py-2">
                             &lt;- Prev Topic
                         </SketchyButton>
-                    ) : <div />}
+                    )}
                 </div>
                 <div>
                     {nextSection ? (

@@ -1,12 +1,19 @@
 import React from 'react';
-import { Search, Menu, Code } from 'lucide-react';
+import { Search, Menu, Code, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 
 interface NavbarProps {
     sidebarOpen: boolean;
     setSidebarOpen: (open: boolean) => void;
+    isSidebarCollapsed?: boolean;
+    setIsSidebarCollapsed?: (collapsed: boolean) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+    sidebarOpen,
+    setSidebarOpen,
+    isSidebarCollapsed = false,
+    setIsSidebarCollapsed
+}) => {
     const courses: string[] = [];
     const [searchOpen, setSearchOpen] = React.useState(false);
 
@@ -35,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ sidebarOpen, setSidebarOpen }) =
                     </div>
 
                     <nav className="hidden md:flex gap-1 ml-4 h-full items-center">
-
+                        {/* Focus button moved to TopicViewer/DSATopicPage */}
                     </nav>
                 </div>
 

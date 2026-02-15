@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Topic } from '../types';
+import { useOutletContext } from 'react-router-dom';
+import { Topic, LayoutContextType } from '../types';
 import { AnimationCanvas } from './AnimationEngine/AnimationCanvas';
 import { TeacherNote, SketchyHighlight, SketchyBox, SketchyButton } from './Controls/SketchyComponents';
-import { Lightbulb, AlertTriangle, CheckCircle2, Languages } from 'lucide-react';
+import { Lightbulb, AlertTriangle, CheckCircle2, Languages, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { QuizComponent } from '../dsa/components/Quiz';
 import { COURSE_MODULES } from '../data/conceptMeta';
 
@@ -14,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const TopicViewer: React.FC<Props> = ({ topic }) => {
   const navigate = useNavigate();
+  const { isSidebarCollapsed, setIsSidebarCollapsed } = useOutletContext<LayoutContextType>();
   const [isTranslated, setIsTranslated] = useState(false);
   const isModule1 = topic.id.startsWith('t1-');
   const isModule2 = topic.id.startsWith('t2-');
@@ -63,12 +65,21 @@ export const TopicViewer: React.FC<Props> = ({ topic }) => {
     <div className="max-w-7xl mx-auto p-4 md:p-8 lg:p-12">
       {/* Top Navigation */}
       <div className="flex justify-between items-center mb-6">
-        <div>
-          {prevTopic ? (
+        <div className="flex items-center gap-3">
+          <SketchyButton
+            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+            className={`text-sm px-3 py-2 flex items-center gap-2 ${isSidebarCollapsed ? '!bg-blue-100' : ''}`}
+            title={isSidebarCollapsed ? "Show Sidebar" : "Focus Mode"}
+          >
+            {isSidebarCollapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
+            <span className="hidden sm:inline">{isSidebarCollapsed ? "Show Menu" : "Focus Mode"}</span>
+          </SketchyButton>
+
+          {prevTopic && (
             <SketchyButton onClick={() => navigateToTopic(prevTopic.slug)} className="text-sm px-4 py-2">
               &lt;- Prev Topic
             </SketchyButton>
-          ) : <div />}
+          )}
         </div>
         <div>
           {nextTopic ? (

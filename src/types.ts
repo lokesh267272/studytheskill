@@ -3,6 +3,11 @@ export interface AnimationFrame {
   description: string;
 }
 
+export interface LayoutContextType {
+  isSidebarCollapsed: boolean;
+  setIsSidebarCollapsed: (collapsed: boolean) => void;
+}
+
 export interface Topic {
   id: string;
   title: string;

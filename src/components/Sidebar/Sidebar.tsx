@@ -7,6 +7,7 @@ import { CheckSquare } from 'lucide-react';
 interface Props {
     isOpen: boolean;
     onToggle: () => void;
+    isCollapsed?: boolean;
     modules: Module[];
     title: React.ReactNode;
     subtitle?: string;
@@ -16,6 +17,7 @@ interface Props {
 export const Sidebar: React.FC<Props> = ({
     isOpen,
     onToggle,
+    isCollapsed = false,
     modules,
     title,
     subtitle = "Core Concepts Mastery",
@@ -27,11 +29,13 @@ export const Sidebar: React.FC<Props> = ({
         <>
             {/* Sidebar Container */}
             <div className={`
-        fixed inset-y-0 left-0 z-40 w-72 bg-[#fdfdfd] border-r-2 border-black transform transition-transform duration-300 ease-in-out overflow-y-auto shadow-2xl md:shadow-none
+        fixed inset-y-0 left-0 z-40 bg-[#fdfdfd] border-black transform transition-all duration-300 ease-in-out overflow-y-auto shadow-2xl md:shadow-none
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:relative md:h-[calc(100vh-110px)] md:top-0
         top-[110px] /* Below Navbar (60px) + Secondary Bar (50px) approx */
         h-[calc(100vh-110px)]
+        w-72 border-r-2
+        ${isCollapsed ? 'md:w-0 md:border-r-0 md:opacity-0 md:overflow-hidden' : 'md:opacity-100'}
       `}>
                 <div className="p-6 border-b-2 border-black bg-yellow-300 sticky top-0 z-10">
                     <h1 className="text-2xl font-bold font-sans tracking-tight uppercase">{title}</h1>

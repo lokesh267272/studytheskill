@@ -7,6 +7,7 @@ import { DSA_MODULES } from '../dsa/dsaMeta';
 
 export const MainLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const location = useLocation();
 
     // Determine context (DBMS or DSA) based on URL
@@ -32,12 +33,18 @@ export const MainLayout = () => {
 
     return (
         <div className="flex flex-col h-screen bg-[#f8f9fa] text-slate-800 font-sans overflow-hidden">
-            <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+            <Navbar
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+                isSidebarCollapsed={isSidebarCollapsed}
+                setIsSidebarCollapsed={setIsSidebarCollapsed}
+            />
 
             <div className="flex flex-1 overflow-hidden relative">
                 <Sidebar
                     isOpen={sidebarOpen}
                     onToggle={() => setSidebarOpen(!sidebarOpen)}
+                    isCollapsed={isSidebarCollapsed}
                     modules={currentModules}
                     title={sidebarTitle}
                     basePath={basePath}
@@ -46,7 +53,7 @@ export const MainLayout = () => {
                 <main ref={mainRef} className="flex-1 overflow-y-auto w-full relative">
                     {/* Paper texture overlay for the content area */}
                     <div className="min-h-full pb-20 md:p-0">
-                        <Outlet />
+                        <Outlet context={{ isSidebarCollapsed, setIsSidebarCollapsed }} />
                     </div>
 
                     {/* Footer Credit */}
