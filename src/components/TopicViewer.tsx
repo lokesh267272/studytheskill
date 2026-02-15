@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Topic, LayoutContextType } from '../types';
 import { AnimationCanvas } from './AnimationEngine/AnimationCanvas';
 import { TeacherNote, SketchyHighlight, SketchyBox, SketchyButton } from './Controls/SketchyComponents';
-import { Lightbulb, AlertTriangle, CheckCircle2, Languages, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { Lightbulb, AlertTriangle, CheckCircle2, Languages, PanelLeftClose, PanelLeftOpen, Maximize, Minimize } from 'lucide-react';
 import { QuizComponent } from '../dsa/components/Quiz';
 import { COURSE_MODULES } from '../data/conceptMeta';
 
@@ -14,6 +14,7 @@ interface Props {
 import { useNavigate } from 'react-router-dom';
 
 export const TopicViewer: React.FC<Props> = ({ topic }) => {
+  const componentRef = React.useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { isSidebarCollapsed, setIsSidebarCollapsed } = useOutletContext<LayoutContextType>();
   const [isTranslated, setIsTranslated] = useState(false);
@@ -24,6 +25,29 @@ export const TopicViewer: React.FC<Props> = ({ topic }) => {
   useEffect(() => {
     setIsTranslated(false);
   }, [topic.id]);
+
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement && componentRef.current) {
+      componentRef.current.requestFullscreen().catch((err) => {
+        console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+      });
+      setIsSidebarCollapsed(true);
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
 
   const handleQuizComplete = () => {
     // Find current topic index
@@ -62,63 +86,92 @@ export const TopicViewer: React.FC<Props> = ({ topic }) => {
   const displayRevisionHook = isTranslated && topic.telugu ? topic.telugu.revisionHook : topic.revisionHook;
 
   return (
-    <div className="max-w-7xl mx-auto p-4 md:p-8 lg:p-12">
-      {/* Top Navigation */}
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center gap-3">
-          <SketchyButton
-            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className={`text-sm px-3 py-2 flex items-center gap-2 ${isSidebarCollapsed ? '!bg-blue-100' : ''}`}
-            title={isSidebarCollapsed ? "Show Sidebar" : "Focus Mode"}
+    <div ref={componentRef} className={`max-w-7xl mx-auto p-4 md:p-8 lg:p-12 ${isFullscreen ? 'bg-white overflow-y-auto h-screen w-full max-w-none' : ''}`}>
+      {/* Floating Exit Focus Button */}
+      {isFullscreen && (
+        <div className="fixed top-4 right-6 z-50 group">
+          <button
+            onClick={toggleFullscreen}
+            className="bg-black/10 hover:bg-black/80 text-black hover:text-white backdrop-blur-sm border border-black/10 rounded-full p-2 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md group-hover:pr-4 group-hover:w-auto w-10 h-10 overflow-hidden"
+            title="Exit Focus Mode"
           >
-            {isSidebarCollapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
-            <span className="hidden sm:inline">{isSidebarCollapsed ? "Show Menu" : "Focus Mode"}</span>
-          </SketchyButton>
+            <Minimize size={18} className="shrink-0" />
+            <span className="font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 w-0 group-hover:w-auto transition-all duration-300 ml-0 group-hover:ml-2 text-sm overflow-hidden">
+              Exit Focus
+            </span>
+          </button>
+        </div>
+      )}
 
-          {prevTopic && (
-            <SketchyButton onClick={() => navigateToTopic(prevTopic.slug)} className="text-sm px-4 py-2">
-              &lt;- Prev Topic
+      {/* Top Navigation - Hidden in Focus Mode */}
+      {!isFullscreen && (
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center gap-3">
+            <SketchyButton
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className={`text-sm px-3 py-2 flex items-center gap-2 ${isSidebarCollapsed ? '!bg-blue-100' : ''}`}
+              title={isSidebarCollapsed ? "Show Sidebar" : "Collapse Contents"}
+            >
+              {isSidebarCollapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
+              <span className="hidden sm:inline">{isSidebarCollapsed ? "Show Contents" : "Collapse Contents"}</span>
+            </SketchyButton>
+
+            <SketchyButton
+              onClick={toggleFullscreen}
+              className={`text-sm px-3 py-2 flex items-center gap-2 ${isFullscreen ? '!bg-blue-100' : ''}`}
+              title={isFullscreen ? "Exit Focus Mode" : "Enter Focus Mode"}
+            >
+              {isFullscreen ? <Minimize size={16} /> : <Maximize size={16} />}
+              <span className="hidden sm:inline">{isFullscreen ? "Exit Focus" : "Focus Mode"}</span>
+            </SketchyButton>
+
+            {prevTopic && (
+              <SketchyButton onClick={() => navigateToTopic(prevTopic.slug)} className="text-sm px-4 py-2">
+                &lt;- Prev Topic
+              </SketchyButton>
+            )}
+          </div>
+          <div>
+            {nextTopic ? (
+              <SketchyButton onClick={() => navigateToTopic(nextTopic.slug)} className="text-sm px-4 py-2">
+                Next Topic -&gt;
+              </SketchyButton>
+            ) : <div />}
+          </div>
+        </div>
+      )}
+
+      {/* Title Header - Hidden in Focus Mode */}
+      {!isFullscreen && (
+        <div className="mb-10 border-b-4 border-black/10 pb-6 pr-12 md:pr-0 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-slate-800 font-sans mb-2 md:mb-3 leading-tight transition-all">
+              {displayTitle}
+            </h1>
+            <div className="flex flex-wrap items-center gap-2 md:gap-3 text-slate-600 font-mono text-[10px] md:text-sm">
+              {!isModule1 && !isModule2 && (
+                <>
+                  <span className="bg-slate-200 px-2 py-1 md:px-3 rounded-full">EXAM FOCUS</span>
+                  <span className="hidden md:inline text-slate-300">|</span>
+                </>
+              )}
+              <span className="tracking-widest opacity-70">INTERACTIVE THEORY MODULE</span>
+            </div>
+          </div>
+
+          {/* Translate Button for Module 1 and 2 */}
+          {(isModule1 || isModule2) && topic.telugu && (
+            <SketchyButton
+              onClick={() => setIsTranslated(!isTranslated)}
+              active={isTranslated}
+              className="flex items-center gap-2 text-xs md:text-sm w-full md:w-auto justify-center !py-2 !px-4"
+            >
+              <Languages size={16} />
+              {isTranslated ? 'English Mode' : 'Romanized Telugu Mode'}
             </SketchyButton>
           )}
         </div>
-        <div>
-          {nextTopic ? (
-            <SketchyButton onClick={() => navigateToTopic(nextTopic.slug)} className="text-sm px-4 py-2">
-              Next Topic -&gt;
-            </SketchyButton>
-          ) : <div />}
-        </div>
-      </div>
-
-      {/* Title Header */}
-      <div className="mb-10 border-b-4 border-black/10 pb-6 pr-12 md:pr-0 flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
-          <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-slate-800 font-sans mb-2 md:mb-3 leading-tight transition-all">
-            {displayTitle}
-          </h1>
-          <div className="flex flex-wrap items-center gap-2 md:gap-3 text-slate-600 font-mono text-[10px] md:text-sm">
-            {!isModule1 && !isModule2 && (
-              <>
-                <span className="bg-slate-200 px-2 py-1 md:px-3 rounded-full">EXAM FOCUS</span>
-                <span className="hidden md:inline text-slate-300">|</span>
-              </>
-            )}
-            <span className="tracking-widest opacity-70">INTERACTIVE THEORY MODULE</span>
-          </div>
-        </div>
-
-        {/* Translate Button for Module 1 and 2 */}
-        {(isModule1 || isModule2) && topic.telugu && (
-          <SketchyButton
-            onClick={() => setIsTranslated(!isTranslated)}
-            active={isTranslated}
-            className="flex items-center gap-2 text-xs md:text-sm w-full md:w-auto justify-center !py-2 !px-4"
-          >
-            <Languages size={16} />
-            {isTranslated ? 'English Mode' : 'Romanized Telugu Mode'}
-          </SketchyButton>
-        )}
-      </div>
+      )}
 
       {/* Main Grid - Asymmetrical on Large Screens */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-8 md:gap-12 items-start">
